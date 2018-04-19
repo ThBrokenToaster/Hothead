@@ -7,7 +7,7 @@ public class CameraFollow2DPlat : MonoBehaviour {
     public Transform target;
     public float cameraSmoothingEffect;
     Vector3 offset;
-    float yLowerBound;
+    public float yLowerBound;
 
 
 
