@@ -25,14 +25,12 @@ public class PlayerController : MonoBehaviour {
 
     //attacking
     public Collider2D[] attackHitboxes;
-    Collider2D enemyHitbox;
-    ContactFilter2D filter = new ContactFilter2D();
 
 
 
     //jumping stuffs
     bool grounded = false;
-    float groundCheckRadius = 0.2f;
+    float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float jumpHeight;
@@ -137,7 +135,14 @@ public class PlayerController : MonoBehaviour {
     //melee hit
     void attack(Collider2D hitbox)
     {
-        
+        StartCoroutine(attackForTime(hitbox));
+    }
+
+    public IEnumerator attackForTime(Collider2D hitbox)
+    {
+        hitbox.enabled = true;
+        yield return new WaitForSeconds(.5f);
+        hitbox.enabled = false;
     }
 
 
