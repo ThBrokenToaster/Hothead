@@ -15,7 +15,7 @@ public class CameraFollow2DPlat : MonoBehaviour {
 	void Start () {
         offset = transform.position - target.position;
 
-        yLowerBound = transform.position.y;
+        // yLowerBound = transform.position.y;
 	}
 	
 	// Update is called once per frame
