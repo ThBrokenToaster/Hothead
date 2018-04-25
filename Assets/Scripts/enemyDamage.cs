@@ -10,14 +10,8 @@ public class enemyDamage : MonoBehaviour {
 
     float nextDamage;
 
-	// Use this for initialization
 	void Start () {
         nextDamage = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     private void OnTriggerStay2D(Collider2D other)
@@ -25,14 +19,14 @@ public class enemyDamage : MonoBehaviour {
         if (other.tag == "Player" && nextDamage < Time.time)
         {
             PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
-            health.doDamage(damage);
+            health.Damage(damage);
             nextDamage = Time.time + damageRate;
 
-            knockback(other.transform);
+            Knockback(other.transform);
         }
     }
 
-    void knockback(Transform other)
+    void Knockback(Transform other)
     {
         Vector2 direction = new Vector2(other.position.x - transform.position.x, other.position.y - transform.position.y).normalized;
         direction *= knockbackAmount;

@@ -19,6 +19,6 @@ public class killBox : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         health = other.gameObject.GetComponent<PlayerHealth>();
-        health.kill();
+        health.Kill();
     }
 }

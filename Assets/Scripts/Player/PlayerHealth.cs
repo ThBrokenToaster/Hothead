@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
+    private PlayerController player;
+
     public float maxHealth;
     public GameObject deathFx;
     public AudioClip hurtNoise;
-    AudioSource playerASS;
+    AudioSource audioSource;
 
     float currentHealth;
-
-    PlayerController controller;
 
     //HUD
     public Slider healthBar;
@@ -24,59 +24,47 @@ public class PlayerHealth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        player = GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
+
         currentHealth = maxHealth;
-
-        controller = GetComponent<PlayerController>();
-
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
-
-        playerASS = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (damaged)
-        {
+        if (damaged) {
             damagedEffect.color = damagedColor;
-        }
-        else
-        {
+        } else {
             damagedEffect.color = Color.Lerp(damagedEffect.color, Color.clear, smoothColor * Time.deltaTime);
         }
         damaged = false;
-		
 	}
 
-    public void doDamage(float damage)
-    {
-        if (damage > 0)
-        {
+    public void Damage(float damage) {
+        if (damage > 0) {
             currentHealth -= damage;
-            playerASS.clip = hurtNoise;
-            playerASS.Play();
+            audioSource.clip = hurtNoise;
+            audioSource.Play();
             damaged = true;
             healthBar.value = currentHealth;
-            if (currentHealth <= 0)
-            {
-                kill();
+            if (currentHealth <= 0) {
+                Kill();
             }
         }
         
     }
 
-    public void heal(float amount)
-    {
+    public void Heal(float amount) {
         currentHealth += amount;
-        if (currentHealth > maxHealth)
-        {
+        if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
         healthBar.value = currentHealth;
     }
 
-    public void kill()
-    {
+    public void Kill() {
         Instantiate(deathFx, transform.position, transform.rotation);
         Destroy(gameObject);
     }
