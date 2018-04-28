@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour {
     private PlayerController player;
 
     public float maxHealth;
-    public GameObject deathFx;
     public AudioClip hurtNoise;
 
     float currentHealth;
@@ -46,10 +45,10 @@ public class PlayerHealth : MonoBehaviour {
             player.audioSource.clip = hurtNoise;
             player.audioSource.Play();
             damaged = true;
-            healthBar.value = currentHealth;
             if (currentHealth <= 0) {
                 Kill();
             }
+            UpdateHealthUI();
         }
         
     }
@@ -59,9 +58,12 @@ public class PlayerHealth : MonoBehaviour {
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
-        healthBar.value = currentHealth;
+        UpdateHealthUI();
     }
 
+    public void UpdateHealthUI() {
+        healthBar.value = currentHealth;
+    }
     public void Kill() {
         // This code needs to change, as deleting the player causes various errors
 
