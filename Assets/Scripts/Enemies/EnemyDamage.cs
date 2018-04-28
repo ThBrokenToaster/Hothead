@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour {
 
-    public float damage;
+    public float damageAmount;
     public float damageRate;
     public float knockbackAmount;
 
@@ -14,20 +14,16 @@ public class EnemyDamage : MonoBehaviour {
         nextDamage = 0;
 	}
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Player" && nextDamage < Time.time)
-        {
-            PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
-            health.Damage(damage);
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.GetComponent<DamageableAbstract>() != null) {
+            other.GetComponent<DamageableAbstract>().Damage(damageAmount);
             nextDamage = Time.time + damageRate;
 
             Knockback(other.transform);
         }
     }
 
-    void Knockback(Transform other)
-    {
+    void Knockback(Transform other) {
         Vector2 direction = new Vector2(other.position.x - transform.position.x, other.position.y - transform.position.y).normalized;
         direction *= knockbackAmount;
         Rigidbody2D pushRb = other.gameObject.GetComponent<Rigidbody2D>();

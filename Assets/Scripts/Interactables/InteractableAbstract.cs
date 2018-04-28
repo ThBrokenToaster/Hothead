@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Interactable : MonoBehaviour {
+abstract public class InteractableAbstract : MonoBehaviour {
 
     abstract public bool CanInteract();
     abstract public void GainFocus();

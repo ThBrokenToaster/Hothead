@@ -2,44 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour {
+public class EnemyHealth : DamageableAbstract {
 
     public float enemyMaxHealth;
+    private float health;
 
-    public GameObject deathFx;
+    public GameObject deathFx; // Optional
+    public GameObject drop; // Optional
 
-    float enemyHealth;
-
-    public bool dropsPickup;
-
-    public GameObject drop;
-
-	// Use this for initialization
 	void Start () {
-        enemyHealth = enemyMaxHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        health = enemyMaxHealth;
 	}
 
-    public void doDamage(float damage)
-    {
-        enemyHealth -= damage;
-        if (enemyHealth <= 0)
-        {
-            kill();
+    override public void Damage(float amount) {
+        health -= amount;
+        if (health <= 0) {
+            Kill();
         }
     }
 
-    void kill()
-    {
-        Instantiate(deathFx, transform.position, transform.rotation);
+    void Kill() {   
         Destroy(gameObject);
-        if (dropsPickup)
-        {
-            Instantiate(drop, transform.position + new Vector3(0, .5f), transform.rotation);
-        }
+        if (deathFx != null) Instantiate(deathFx, transform.position, transform.rotation);
+        if (drop != null) Instantiate(drop, transform.position + new Vector3(0, .5f), transform.rotation);
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour {
 
     private PlayerController player;
-    private List<Interactable> interactables = new List<Interactable>();
-    private Interactable focusedInteractable;
+    private List<InteractableAbstract> interactables = new List<InteractableAbstract>();
+    private InteractableAbstract focusedInteractable;
     private bool usePressed = false;
 
 	void Start() {
@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour {
 	}
 
 	void Update () {
-        Interactable closest = GetClosestInteractable();
+        InteractableAbstract closest = GetClosestInteractable();
         if (focusedInteractable != closest) {
             if (focusedInteractable != null) {
                 focusedInteractable.LoseFocus();
@@ -41,23 +41,23 @@ public class PlayerInteract : MonoBehaviour {
 	}
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.GetComponent<Interactable>() != null) {
-            interactables.Add(other.GetComponent<Interactable>());
+        if (other.GetComponent<InteractableAbstract>() != null) {
+            interactables.Add(other.GetComponent<InteractableAbstract>());
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (interactables.Contains(other.GetComponent<Interactable>())) {
-            interactables.Remove(other.GetComponent<Interactable>());
+        if (interactables.Contains(other.GetComponent<InteractableAbstract>())) {
+            interactables.Remove(other.GetComponent<InteractableAbstract>());
         }
     }
 
-    private Interactable GetClosestInteractable() {
+    private InteractableAbstract GetClosestInteractable() {
         if (interactables.Count == 0) {
             return null;
         }
-        Interactable closest = interactables[0];
-        foreach (Interactable i in interactables) {
+        InteractableAbstract closest = interactables[0];
+        foreach (InteractableAbstract i in interactables) {
             if (i.CanInteract() && DistanceFromPlayer(i) < DistanceFromPlayer(closest)) {
                 closest = i;
             }
@@ -68,7 +68,7 @@ public class PlayerInteract : MonoBehaviour {
         return closest;
     }
 
-    private float DistanceFromPlayer(Interactable i) {
+    private float DistanceFromPlayer(InteractableAbstract i) {
         return Vector2.Distance(i.transform.position, player.transform.position);
     }
 }

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     public PlayerHealth health;
     [HideInInspector]
     public PlayerMelee melee;
+    [HideInInspector]
+    public PlayerProjectile projectile;
     
     private Rigidbody2D rb;
     [HideInInspector]
@@ -24,12 +26,9 @@ public class PlayerController : MonoBehaviour {
 
     // PlasmaBolts
     public Transform hand;
-    public GameObject projectile;
-    public GameObject arrowFire;
-    public float fireRate = 1f;
-    public float nextFire = 0;
+    
 
-    int equiped = 0;
+    public int equipped = 0;
 
     // Jumping
     [HideInInspector]
@@ -47,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         health =  GetComponent<PlayerHealth>();
         melee = GetComponent<PlayerMelee>();
+        projectile = GetComponent<PlayerProjectile>();
         audioSource = GetComponent<AudioSource>();
 	}
 
@@ -89,20 +89,17 @@ public class PlayerController : MonoBehaviour {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
+        // Component Updates
         melee.MeleeUpdate();
+        projectile.ProjectileUpdate();
         
         // Switching Items
         if (Input.GetButtonDown("Fire3")) {
-            if (equiped < 2) {
-                equiped++;
+            if (equipped < 2) {
+                equipped++;
             } else {
-                equiped = 0;
+                equipped = 0;
             }
-        }
-
-        // Plasma Bolt
-        if (Input.GetButtonDown("Fire1")) {
-            firePlasma();
         }
 
         // Set playAnim triggers
@@ -120,28 +117,5 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void firePlasma() {
-        if (Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
-            if (equiped == 0) {
-                if (facingRight) {
-                    Instantiate(projectile, hand.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                } else if (!facingRight) {
-                    Instantiate(projectile, hand.position, Quaternion.Euler(new Vector3(0, 0, 180)));
-                }
-            } else if (equiped == 1) {
-                if (facingRight) {
-                    Instantiate(arrowFire, hand.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                } else if (!facingRight) {
-                    Instantiate(arrowFire, hand.position, Quaternion.Euler(new Vector3(0, 0, 180)));
-                }
-            } else {
-                if (facingRight) {
-                    Instantiate(projectile, hand.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                } else if (!facingRight) {
-                    Instantiate(projectile, hand.position, Quaternion.Euler(new Vector3(0, 0, 180)));
-                }
-            }
-        }
-    }
+    
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : DamageableAbstract {
 
     private PlayerController player;
 
@@ -39,9 +39,9 @@ public class PlayerHealth : MonoBehaviour {
         damaged = false;
 	}
 
-    public void Damage(float damage) {
-        if (damage > 0) {
-            currentHealth -= damage;
+    override public void Damage(float amount) {
+        if (amount > 0) {
+            currentHealth -= amount;
             player.audioSource.clip = hurtNoise;
             player.audioSource.Play();
             damaged = true;
@@ -66,8 +66,6 @@ public class PlayerHealth : MonoBehaviour {
     }
     public void Kill() {
         // This code needs to change, as deleting the player causes various errors
-
-        // Instantiate(deathFx, transform.position, transform.rotation);
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
