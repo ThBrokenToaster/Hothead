@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Implementation of DamageableAbstract designed for enemies
+ */
 public class EnemyHealth : DamageableAbstract {
 
     public float enemyMaxHealth;

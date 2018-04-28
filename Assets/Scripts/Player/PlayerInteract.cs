@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Subcomponent of PlayerController managing interactables
+ */
 public class PlayerInteract : MonoBehaviour {
 
     private PlayerController player;

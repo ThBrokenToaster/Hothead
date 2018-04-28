@@ -4,6 +4,9 @@ using UnityEngine;
 
 public enum State { idle, walk, melee };
 
+/*
+ * The main player component. Mostly manages movement
+ */
 public class PlayerController : MonoBehaviour {
     
     // Player components

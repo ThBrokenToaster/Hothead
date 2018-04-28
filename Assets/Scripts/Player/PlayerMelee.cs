@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Subcomponent of PlayerController managing melee attacks
+ */
 public class PlayerMelee : MonoBehaviour {
 
 	private PlayerController player;

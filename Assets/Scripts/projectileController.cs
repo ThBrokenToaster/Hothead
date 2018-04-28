@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Controller for projectiles (currently only player projectiles)
+ */
 public class ProjectileController : MonoBehaviour {
 
     Rigidbody2D proRB;

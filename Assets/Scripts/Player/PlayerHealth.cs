@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Subcomponent of PlayerController managing health, extends DamageableAbstract
+ */
 public class PlayerHealth : DamageableAbstract {
 
     private PlayerController player;

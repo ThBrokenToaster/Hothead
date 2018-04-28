@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Attach to enemy trigger collider to cause damage and knockback to DamageableAbstract
+ */
 public class EnemyDamage : MonoBehaviour {
 
     public float damageAmount;

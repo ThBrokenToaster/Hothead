@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Attach to Camera to follow target smoothly
+ */
 public class CameraFollow2DPlat : MonoBehaviour {
 
     public Transform target;
