@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     [HideInInspector]
     public Animator animator;
+    public AudioSource audioSource;
 
     // General
     public float maxSpeed;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         health =  GetComponent<PlayerHealth>();
         melee = GetComponent<PlayerMelee>();
+        audioSource = GetComponent<AudioSource>();
 	}
 
 	void FixedUpdate () {

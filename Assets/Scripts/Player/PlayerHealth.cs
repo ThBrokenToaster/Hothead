@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour {
     public float maxHealth;
     public GameObject deathFx;
     public AudioClip hurtNoise;
-    AudioSource audioSource;
 
     float currentHealth;
 
@@ -25,7 +24,6 @@ public class PlayerHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GetComponent<PlayerController>();
-        audioSource = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
@@ -45,8 +43,8 @@ public class PlayerHealth : MonoBehaviour {
     public void Damage(float damage) {
         if (damage > 0) {
             currentHealth -= damage;
-            audioSource.clip = hurtNoise;
-            audioSource.Play();
+            player.audioSource.clip = hurtNoise;
+            player.audioSource.Play();
             damaged = true;
             healthBar.value = currentHealth;
             if (currentHealth <= 0) {
@@ -65,7 +63,9 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void Kill() {
-        Instantiate(deathFx, transform.position, transform.rotation);
-        Destroy(gameObject);
+        // This code needs to change, as deleting the player causes various errors
+
+        // Instantiate(deathFx, transform.position, transform.rotation);
+        // Destroy(gameObject);
     }
 }

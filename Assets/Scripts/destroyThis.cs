@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class destroyThis : MonoBehaviour {
+public class DestroyThis : MonoBehaviour {
 
     public float timer;
 
