@@ -13,33 +13,15 @@ public class PlayerHealth : DamageableAbstract {
     public float maxHealth;
     public AudioClip hurtNoise;
 
-    float currentHealth;
+    [HideInInspector]
+    public float currentHealth;
 
-    //HUD
-    public Slider healthBar;
-    public Image damagedEffect;
-    Color damagedColor = new Color(0f, 0f, 0f, .5f);
-    float smoothColor = 5f;
-
-    bool damaged = false;
-
-	// Use this for initialization
-	void Start () {
+	void Awake() {
         player = GetComponent<PlayerController>();
-
+    }
+    
+	void Start () {
         currentHealth = maxHealth;
-        healthBar.maxValue = maxHealth;
-        healthBar.value = maxHealth;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (damaged) {
-            damagedEffect.color = damagedColor;
-        } else {
-            damagedEffect.color = Color.Lerp(damagedEffect.color, Color.clear, smoothColor * Time.deltaTime);
-        }
-        damaged = false;
 	}
 
     override public void Damage(float amount) {
@@ -47,11 +29,11 @@ public class PlayerHealth : DamageableAbstract {
             currentHealth -= amount;
             player.audioSource.clip = hurtNoise;
             player.audioSource.Play();
-            damaged = true;
             if (currentHealth <= 0) {
                 Kill();
             }
-            UpdateHealthUI();
+            UICanvasController.instance.TriggerDamageAnimation();
+            UICanvasController.instance.UpdateHealthUI();
         }
         
     }
@@ -61,12 +43,9 @@ public class PlayerHealth : DamageableAbstract {
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
-        UpdateHealthUI();
+        UICanvasController.instance.UpdateHealthUI();
     }
 
-    public void UpdateHealthUI() {
-        healthBar.value = currentHealth;
-    }
     public void Kill() {
         // This code needs to change, as deleting the player causes various errors
         Destroy(gameObject);

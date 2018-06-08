@@ -26,4 +26,8 @@ public class CameraFollow2DPlat : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, yLowerBound, transform.position.z);
         }
     }
+
+    public void Refresh() {
+        transform.position = target.position + offset;
+    }
 }

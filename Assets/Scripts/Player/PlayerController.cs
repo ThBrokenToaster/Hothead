@@ -9,6 +9,8 @@ public enum State { idle, walk, melee };
  */
 public class PlayerController : MonoBehaviour {
     
+    public static PlayerController instance;
+
     // Player components
     [HideInInspector]
     public PlayerHealth health;
@@ -16,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     public PlayerMelee melee;
     [HideInInspector]
     public PlayerProjectile projectile;
+    [HideInInspector]
+    public PlayerInteract interact;
     
     private Rigidbody2D rb;
     [HideInInspector]
@@ -43,13 +47,20 @@ public class PlayerController : MonoBehaviour {
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     
+    void Awake() {
+		if (instance == null) {
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);    
+		}
+		DontDestroyOnLoad(gameObject);
 
-	void Start () {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health =  GetComponent<PlayerHealth>();
         melee = GetComponent<PlayerMelee>();
         projectile = GetComponent<PlayerProjectile>();
+        interact = GetComponent<PlayerInteract>();
         audioSource = GetComponent<AudioSource>();
 	}
 
@@ -59,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
         // Flip player if needed
         if (move != 0 && move > 0 != facingRight) {
-            flip();
+            Flip();
         }
 
         // Set playerState
@@ -111,7 +122,7 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("verticalSpeed", rb.velocity.y);
 	}
 
-    void flip() {
+    void Flip() {
         if (state != State.melee) {
             facingRight = !facingRight;
             Vector3 scale = transform.localScale;
@@ -120,5 +131,13 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    
+    public void Refresh() {
+        rb.velocity = Vector2.zero;
+        interact.Refresh();
+    }
+
+    public void MoveTo(Vector3 position) {
+        transform.position = position;
+
+    }
 }

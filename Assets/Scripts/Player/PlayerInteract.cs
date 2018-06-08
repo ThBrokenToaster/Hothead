@@ -74,4 +74,12 @@ public class PlayerInteract : MonoBehaviour {
     private float DistanceFromPlayer(InteractableAbstract i) {
         return Vector2.Distance(i.transform.position, player.transform.position);
     }
+
+    public void Refresh() {
+        if (focusedInteractable != null) {
+            focusedInteractable.LoseFocus();
+            focusedInteractable = null;
+        }
+        interactables.Clear();
+    }
 }

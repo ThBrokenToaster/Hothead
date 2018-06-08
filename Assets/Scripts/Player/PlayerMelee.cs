@@ -13,28 +13,25 @@ public class PlayerMelee : MonoBehaviour {
     public Collider2D[] attackHitboxes;
 
 
-	void Start () {
+	void Awake() {
 		player = GetComponent<PlayerController>();
 	}
 	
 	public void MeleeUpdate() {
 		// Melee attack
         if (Input.GetButtonDown("Melee") && player.grounded && player.state != State.melee) {
-            attack(attackHitboxes[0]);
             player.animator.SetTrigger("melee");
         }
 	}
 
-	// Melee hit
-    void attack(Collider2D hitbox) {
-        StartCoroutine(attackForTime(hitbox));
+	// Melee hitbox controls, used by player animator
+    public void EnableMeleeHitbox(string hitboxName) {
+        player.state = State.melee;
+        transform.Find(hitboxName).GetComponent<Collider2D>().enabled = true;
     }
 
-    public IEnumerator attackForTime(Collider2D hitbox) {
-        player.state = State.melee;
-        hitbox.enabled = true;
-        yield return new WaitForSeconds(.5f);
-        hitbox.enabled = false;
+    public void DisableMeleeHitbox(string hitboxName) {
         player.state = State.idle;
+        transform.Find(hitboxName).GetComponent<Collider2D>().enabled = false;
     }
 }
