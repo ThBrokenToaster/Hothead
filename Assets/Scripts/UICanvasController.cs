@@ -11,7 +11,10 @@ public class UICanvasController : MonoBehaviour {
 	public static UICanvasController instance = null;
 	public Slider healthBar;
     public Image damagedEffect;
-	public Animator animator;
+	private Animator animator;
+	public GameObject pauseMenu;
+
+	private GameManager.Event postFadeEvent;
 
 	void Awake() {
 		if (instance == null) {
@@ -34,5 +37,39 @@ public class UICanvasController : MonoBehaviour {
 
 	public void TriggerDamageAnimation() {
 		animator.SetTrigger("Damage");
+	}
+
+	// Begins fade out animation. Stores GameManager.Event to call after completion
+	public void TriggerFadeOut(GameManager.Event afterFadeOut) {
+		postFadeEvent = afterFadeOut;
+		animator.SetTrigger("FadeOut");
+	}
+
+	// Called when animator is done fading out
+	public void OnFadeOutComplete() {
+		if (postFadeEvent != null) {
+			postFadeEvent();
+		}
+	}
+
+	// Begins fade in animation. Stores GameManager.Event to call after completion
+	public void TriggerFadeIn(GameManager.Event afterFadeIn) {
+		postFadeEvent = afterFadeIn;
+		animator.SetTrigger("FadeIn");
+	}
+
+	// Called when animator is done fading in
+	public void OnFadeInComplete() {
+		if (postFadeEvent != null) {
+			postFadeEvent();
+		}
+	}
+
+	public void ShowPauseMenu() {
+		pauseMenu.SetActive(true);
+	}
+
+	public void HidePauseMenu() {
+		pauseMenu.SetActive(false);
 	}
 }
