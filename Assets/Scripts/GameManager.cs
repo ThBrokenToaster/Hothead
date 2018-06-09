@@ -12,12 +12,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
-	public enum LoadState { firstLoad, loaded, loadingToDoor };
-	public enum GameState { running, paused };
 
+	private enum LoadState { firstLoad, loaded, loadingToDoor };
+	private enum GameState { running, paused };
 	private LoadState loadState = LoadState.firstLoad;
 	private GameState gameState = GameState.running;
 
+	public bool paused = false;
 	private string loadToDoorName;
 	private string loadToScene;
 	
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour {
 
 	public void PauseGame(bool showPauseMenu) {
 		gameState = GameState.paused;
+		paused = true;
 		if (showPauseMenu) {
 			UICanvasController.instance.ShowPauseMenu();
 		}
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour {
 
 	public void UnPauseGame() {
 		gameState = GameState.running;
+		paused = false;
 		UICanvasController.instance.HidePauseMenu();
 
 		Time.timeScale = 1f;

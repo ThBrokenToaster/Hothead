@@ -28,7 +28,7 @@ public class PlayerInteract : MonoBehaviour {
             focusedInteractable = closest;
         }
 
-        if (Input.GetAxisRaw("Use") > 0) {
+        if (!GameManager.instance.paused && Input.GetAxisRaw("Use") > 0) {
             if (!usePressed) {
                 usePressed = true;
                 if (focusedInteractable != null) {
