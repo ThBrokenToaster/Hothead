@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State { idle, walk, melee };
-
 /*
  * The main player component. Mostly manages movement
  */
 public class PlayerController : MonoBehaviour {
     
     public static PlayerController instance;
+    public enum State { idle, walk, melee };
 
     // Player components
     [HideInInspector]

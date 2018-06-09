@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour {
 		// move player to door
 		if (loadState == LoadState.loadingToDoor) {
 			DoorController.FindDoor(loadToDoorName).MovePlayer();
-			UICanvasController.instance.TriggerFadeIn(null);
+			UICanvasController.instance.TriggerFadeIn(UnPauseGame);
 		}
 
 		// refresh unless its the first load
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		loadState = LoadState.loaded;
-		UnPauseGame();
 	}
 
 	// Refresh is called when the player is reloaded (resets player)

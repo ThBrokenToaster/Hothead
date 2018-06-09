@@ -19,19 +19,28 @@ public class PlayerMelee : MonoBehaviour {
 	
 	public void MeleeUpdate() {
 		// Melee attack
-        if (Input.GetButtonDown("Melee") && player.grounded && player.state != State.melee) {
+        if (Input.GetButtonDown("Melee") && player.grounded && player.state != PlayerController.State.melee) {
             player.animator.SetTrigger("melee");
         }
 	}
 
-	// Melee hitbox controls, used by player animator
+	/* Melee hitbox controls, used by player animator
+     * Each melee animation should have three phases:
+     * Buildup, Contact, Recovery
+     */
+    public void EnterMelee() {
+        player.state = PlayerController.State.melee;
+    }
+
     public void EnableMeleeHitbox(string hitboxName) {
-        player.state = State.melee;
         transform.Find(hitboxName).GetComponent<Collider2D>().enabled = true;
     }
 
     public void DisableMeleeHitbox(string hitboxName) {
-        player.state = State.idle;
         transform.Find(hitboxName).GetComponent<Collider2D>().enabled = false;
+    }
+    
+    public void ExitMelee() {
+        player.state = PlayerController.State.idle;
     }
 }

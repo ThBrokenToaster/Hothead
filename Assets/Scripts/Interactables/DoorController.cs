@@ -29,7 +29,7 @@ public class DoorController : InteractableAbstract {
 	}
 
 	override public bool CanInteract() {
-		return PlayerController.instance.grounded;
+		return PlayerController.instance.grounded && PlayerController.instance.state != PlayerController.State.melee;
 	}
 
 	override public void Interact(){
