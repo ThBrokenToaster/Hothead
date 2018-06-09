@@ -36,8 +36,7 @@ public class DoorController : InteractableAbstract {
 		if (loadsNewScene) {
 			GameManager.instance.LoadSceneToDoor(sceneToLoad, doorToLoad);
 		} else {
-			FindDoor(doorToLoad).MovePlayer();
-			GameManager.instance.Refresh();
+			GameManager.instance.MoveToDoor(doorToLoad);
 		}
 	}
 

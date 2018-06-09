@@ -76,6 +76,21 @@ public class GameManager : MonoBehaviour {
 		UICanvasController.instance.TriggerFadeOut(LoadScene);
 	}
 
+	// moves the player to a door within the same scene
+	public void MoveToDoor(string doorName) {
+		loadToDoorName = doorName;
+
+		PauseGame(false);
+		UICanvasController.instance.TriggerFadeOut(PostMoveToDoor);
+	}
+
+	// Moves player to door and triggers fade in
+	public void PostMoveToDoor() {
+		DoorController.FindDoor(loadToDoorName).MovePlayer();
+		Refresh();
+		UICanvasController.instance.TriggerFadeIn(UnPauseGame);
+	}
+
 	public void LoadScene() {
 		SceneManager.LoadScene(loadToScene);
 	}
