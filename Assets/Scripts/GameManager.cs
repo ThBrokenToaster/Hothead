@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 
 	private enum LoadState { firstLoad, loaded, loadingToDoor };
-	private enum GameState { running, paused };
+	private enum GameState { running, pauseMenu, paused };
 	private LoadState loadState = LoadState.firstLoad;
 	private GameState gameState = GameState.running;
 
@@ -38,17 +38,20 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			if (gameState == GameState.running) {
 				PauseGame(true);
-			} else {
+			} else if (gameState == GameState.pauseMenu) {
 				UnPauseGame();
 			}
 		}
 	}
 
 	public void PauseGame(bool showPauseMenu) {
-		gameState = GameState.paused;
 		paused = true;
+		
 		if (showPauseMenu) {
+			gameState = GameState.pauseMenu;
 			UICanvasController.instance.ShowPauseMenu();
+		} else {
+			gameState = GameState.paused;
 		}
 
 		Time.timeScale = 0f;
