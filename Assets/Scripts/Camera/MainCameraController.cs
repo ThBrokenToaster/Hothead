@@ -8,6 +8,8 @@ using UnityEngine;
 public class MainCameraController : MonoBehaviour {
 
 	public static MainCameraController instance = null;
+	
+	private Camera mainCamera;
 
 	void Awake() {
 		if (instance == null) {
@@ -16,9 +18,18 @@ public class MainCameraController : MonoBehaviour {
 			Destroy(gameObject);    
 		}
 		DontDestroyOnLoad(gameObject);
+		mainCamera = GetComponent<Camera>();
 	}
 
 	public void Refresh() {
 		GetComponent<CameraFollow2DPlat>().Refresh();
+	}
+
+	public void HideWorldSpaceUI() {
+		mainCamera.cullingMask &=  ~(1 << LayerMask.NameToLayer("World Space UI"));
+	}
+
+	public void ShowWorldSpaceUI() {
+		mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("World Space UI");
 	}
 }

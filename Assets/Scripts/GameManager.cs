@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 	public bool paused = false;
 	private string loadToDoorName;
 	private string loadToScene;
+
+	public EventManager eventManager;
 	
 	public delegate void Event();
 
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour {
 			Destroy(gameObject);    
 		}
 		DontDestroyOnLoad(gameObject);
+
+		eventManager = GetComponent<EventManager>();
 	}
 
 	void Update() {
@@ -49,20 +53,24 @@ public class GameManager : MonoBehaviour {
 		
 		if (showPauseMenu) {
 			gameState = GameState.pauseMenu;
-			UICanvasController.instance.ShowPauseMenu();
+			HUDController.instance.ShowPauseMenu();
 		} else {
 			gameState = GameState.paused;
 		}
 
 		Time.timeScale = 0f;
+
+		MainCameraController.instance.HideWorldSpaceUI();
 	}
 
 	public void UnPauseGame() {
 		gameState = GameState.running;
 		paused = false;
-		UICanvasController.instance.HidePauseMenu();
+		HUDController.instance.HidePauseMenu();
 
 		Time.timeScale = 1f;
+
+		MainCameraController.instance.ShowWorldSpaceUI();
 	}
 
 	// load new scene, w/ player starting at a certain door
@@ -73,7 +81,7 @@ public class GameManager : MonoBehaviour {
 
 		PauseGame(false);
 		// Trigger fade out, load scene after fade
-		UICanvasController.instance.TriggerFadeOut(LoadScene);
+		HUDController.instance.TriggerFadeOut(LoadScene);
 	}
 
 	// moves the player to a door within the same scene
@@ -81,14 +89,14 @@ public class GameManager : MonoBehaviour {
 		loadToDoorName = doorName;
 
 		PauseGame(false);
-		UICanvasController.instance.TriggerFadeOut(PostMoveToDoor);
+		HUDController.instance.TriggerFadeOut(PostMoveToDoor);
 	}
 
 	// Moves player to door and triggers fade in
 	public void PostMoveToDoor() {
 		DoorController.FindDoor(loadToDoorName).MovePlayer();
 		Refresh();
-		UICanvasController.instance.TriggerFadeIn(UnPauseGame);
+		HUDController.instance.TriggerFadeIn(UnPauseGame);
 	}
 
 	public void LoadScene() {
@@ -108,7 +116,7 @@ public class GameManager : MonoBehaviour {
 		// move player to door
 		if (loadState == LoadState.loadingToDoor) {
 			DoorController.FindDoor(loadToDoorName).MovePlayer();
-			UICanvasController.instance.TriggerFadeIn(UnPauseGame);
+			HUDController.instance.TriggerFadeIn(UnPauseGame);
 		}
 
 		// refresh unless its the first load

@@ -32,8 +32,8 @@ public class PlayerHealth : DamageableAbstract {
             if (currentHealth <= 0) {
                 Kill();
             }
-            UICanvasController.instance.TriggerDamageAnimation();
-            UICanvasController.instance.UpdateHealthUI();
+            HUDController.instance.TriggerDamageAnimation();
+            HUDController.instance.UpdateHealthUI();
         }
         
     }
@@ -43,7 +43,7 @@ public class PlayerHealth : DamageableAbstract {
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
-        UICanvasController.instance.UpdateHealthUI();
+        HUDController.instance.UpdateHealthUI();
     }
 
     public void Kill() {

@@ -10,7 +10,6 @@ public class PlayerInteract : MonoBehaviour {
     private PlayerController player;
     private List<InteractableAbstract> interactables = new List<InteractableAbstract>();
     private InteractableAbstract focusedInteractable;
-    private bool usePressed = false;
 
 	void Start() {
 		player = GetComponent<PlayerController>();
@@ -28,17 +27,10 @@ public class PlayerInteract : MonoBehaviour {
             focusedInteractable = closest;
         }
 
-        if (!GameManager.instance.paused && Input.GetAxisRaw("Use") > 0) {
-            if (!usePressed) {
-                usePressed = true;
-                if (focusedInteractable != null) {
-                    focusedInteractable.Interact();
-                } 
-            }
-        } else {
-            if (usePressed) {
-                usePressed = false;
-            }
+        if (!GameManager.instance.paused && Input.GetButtonDown("Use")) {
+            if (focusedInteractable != null) {
+                focusedInteractable.Interact();
+            } 
         }
 
 	}

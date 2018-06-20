@@ -17,6 +17,7 @@ public class DoorController : InteractableAbstract {
 
 	void Start() {
 		marker = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		marker.gameObject.layer = LayerMask.NameToLayer("World Space UI");
 		marker.enabled = false;
 	}
 

@@ -6,13 +6,16 @@ using UnityEngine.UI;
 /*
  * Controller for UI canvas, persits between scenes
  */
-public class UICanvasController : MonoBehaviour {
+public class HUDController : MonoBehaviour {
 
-	public static UICanvasController instance = null;
+	public static HUDController instance = null;
+
 	public Slider healthBar;
     public Image damagedEffect;
-	private Animator animator;
 	public GameObject pauseMenu;
+
+	private Animator animator;
+	public DialogueHUDController dialogue;
 
 	private GameManager.Event postFadeEvent;
 
@@ -23,7 +26,9 @@ public class UICanvasController : MonoBehaviour {
 			Destroy(gameObject);    
 		}
 		DontDestroyOnLoad(gameObject);
+
 		animator = GetComponent<Animator>();
+		dialogue = GetComponent<DialogueHUDController>();
 	}
 
 	void Start () {
