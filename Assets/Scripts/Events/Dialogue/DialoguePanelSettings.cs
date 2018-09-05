@@ -6,5 +6,4 @@ using UnityEngine;
 public class DialoguePanelSettings {
 	public bool useCustomSpeed;
 	public float speedMultiplier = 1f;
-	public TextShake.EffectType effectType;
 }

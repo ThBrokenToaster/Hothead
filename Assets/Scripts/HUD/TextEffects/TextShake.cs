@@ -76,6 +76,7 @@ public class TextShake : MonoBehaviour {
 				if (!charInfo.isVisible)
 					continue;
 
+				
 				// Get the index of the material used by the current character.
 				int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
 
@@ -88,6 +89,10 @@ public class TextShake : MonoBehaviour {
 				Vector3[] destinationVertices = textInfo.meshInfo[materialIndex].vertices;
 
 				Vector3 jitterOffset = Vector3.zero;
+
+				FontStyles style = textInfo.characterInfo[i].style;
+				Debug.Log(style.ToString());
+
 				if (type == EffectType.shake) {
 					jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 				} else if (type == EffectType.wave) {

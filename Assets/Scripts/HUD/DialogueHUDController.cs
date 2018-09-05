@@ -10,8 +10,7 @@ public class DialogueHUDController : MonoBehaviour {
 	public TextMeshProUGUI nameTMP, bodyTMP;
 
 	private DialogueEvent dialogueEvent;
-	private TextReveal revealEffect;
-	private TextShake shakeEffect;
+	private TextEffects textController;
 
 	private enum DialogueState { disabled, loading, finished } 
 	private DialogueState state = DialogueState.disabled;
@@ -21,9 +20,8 @@ public class DialogueHUDController : MonoBehaviour {
 
 	void Awake() {
 		hud = GetComponent<HUDController>();
-		shakeEffect = bodyTMP.GetComponent<TextShake>();
-		revealEffect = bodyTMP.GetComponent<TextReveal>();
-		revealEffect.SetDialogueHUD(this);
+		textController = bodyTMP.GetComponent<TextEffects>();
+		textController.SetDialogueHUD(this);
 	}
 
 	void LateUpdate() {
@@ -31,7 +29,7 @@ public class DialogueHUDController : MonoBehaviour {
 			if (Input.GetButtonDown("Use")) {
 				switch (state) {
 					case DialogueState.loading:
-						revealEffect.FinishReveal();
+						textController.FinishReveal();
 						break;
 					case DialogueState.finished:
 						dialogueEvent.NextPanel();
@@ -48,23 +46,20 @@ public class DialogueHUDController : MonoBehaviour {
 		dialogueUI.SetActive(true);
 
 		nameTMP.SetText(panel.nameText);
-		bodyTMP.SetText(panel.bodyText);
 
-		shakeEffect.enabled = panel.settings.effectType != TextShake.EffectType.none;
-		shakeEffect.type = panel.settings.effectType;
-
+		textController.SetText(panel.bodyText);
 
 		if (panel.settings.useCustomSpeed) {
-			revealEffect.speedMultiplier = panel.settings.speedMultiplier;
+			textController.speedMultiplier = panel.settings.speedMultiplier;
 		} else {
-			revealEffect.speedMultiplier = 1f;
+			textController.speedMultiplier = 1f;
 		}
 		
 		ableToContinue = false;
 		firstFrameEnabled = true;
 		dialogueEvent = callback;
 
-		revealEffect.StartReveal();
+		textController.StartReveal();
 	}
 
 
