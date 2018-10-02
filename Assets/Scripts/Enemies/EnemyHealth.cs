@@ -13,8 +13,12 @@ public class EnemyHealth : DamageableAbstract {
     public GameObject deathFx; // Optional
     public GameObject drop; // Optional
 
+    public float knockbackMultiplier = 0f;
+    private Rigidbody2D rb;
+
 	void Start () {
         health = enemyMaxHealth;
+        rb = GetComponent<Rigidbody2D>(); // Optional
 	}
 
     override public void Damage(float amount) {
@@ -22,6 +26,10 @@ public class EnemyHealth : DamageableAbstract {
         if (health <= 0) {
             Kill();
         }
+    }
+
+    override public void ApplyKnockback(Vector2 dir, float amount) {
+        if (rb != null) rb.velocity = dir * amount * knockbackMultiplier;
     }
 
     void Kill() {   

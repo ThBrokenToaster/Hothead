@@ -8,10 +8,28 @@ using UnityEngine;
 public class PlayerMeleeCollider : MonoBehaviour {
 
     public float damage;
+    public float knockback;
+
+    public void SetEnabled(bool e) {
+        GetComponent<Collider2D>().enabled = e;
+
+        // There is a glitch where onTriggerEnter wont
+        // be called on stationary objects when first
+        // enabled, so this just moves the collider
+        // slightly so it will always work. 
+        if (e) {
+            transform.position += Vector3.one * .001f;
+        } else {
+            transform.position -= Vector3.one * .001f;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.GetComponent<DamageableAbstract>() != null) {
-            other.GetComponent<DamageableAbstract>().Damage(damage);
+        DamageableAbstract d = other.GetComponent<DamageableAbstract>();
+        if (d != null) {
+            d.Damage(damage);
+            Vector2 dir = (other.transform.position - transform.position).normalized;
+            d.ApplyKnockback(dir, knockback);
         }
     }
 }

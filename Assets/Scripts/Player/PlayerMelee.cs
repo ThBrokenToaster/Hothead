@@ -40,11 +40,11 @@ public class PlayerMelee : MonoBehaviour {
     }
 
     public void EnableMeleeHitbox(string hitboxName) {
-        transform.Find(hitboxName).GetComponent<Collider2D>().enabled = true;
+        transform.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(true);
     }
 
     public void DisableMeleeHitbox(string hitboxName) {
-        transform.Find(hitboxName).GetComponent<Collider2D>().enabled = false;
+        transform.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(false);
     }
     
     public void ExitMelee() {
