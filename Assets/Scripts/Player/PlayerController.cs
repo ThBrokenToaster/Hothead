@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
     public PlayerInteract interact;
     
     private Rigidbody2D rb;
-    private SpriteRenderer sp;
     [HideInInspector]
     public Animator animator;
     [HideInInspector]
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour {
         projectile = GetComponent<PlayerProjectile>();
         interact = GetComponent<PlayerInteract>();
         audioSource = GetComponent<AudioSource>();
-        sp = GetComponent<SpriteRenderer>();
 	}
 
 	void FixedUpdate () {
@@ -71,9 +69,11 @@ public class PlayerController : MonoBehaviour {
         float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
         float velY = rb.velocity.y;
 
-        // Flip player if needed
         if (velX != 0) {
-            sp.flipX = velX < 0;
+            facingRight = velX > 0;
+            Vector3 scale = transform.localScale;
+            scale.x = facingRight ? 1 : -1;
+            transform.localScale = scale;
         }
 
         // Set playerState

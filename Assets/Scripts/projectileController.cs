@@ -9,19 +9,21 @@ public class ProjectileController : MonoBehaviour {
 
     Rigidbody2D proRB;
     public float damage;
+    [HideInInspector]
+    public bool facingRight;
 
     public GameObject explosionEffect; // Optional
     public float projectileSpeed; 
     
 	void Start () {
+        GetComponent<SpriteRenderer>().flipX = !facingRight;
         proRB = GetComponent<Rigidbody2D>();
-        
-        if (transform.localRotation.z != 0) {
-            proRB.AddForce(new Vector2(-1, 0) * projectileSpeed, ForceMode2D.Impulse);
+        if (facingRight) {
+            proRB.velocity = Vector2.right;
         } else {
-            proRB.AddForce(new Vector2(1, 0) * projectileSpeed, ForceMode2D.Impulse);
+            proRB.velocity = Vector2.left;
         }
-
+        proRB.velocity *= projectileSpeed;
 	}
 
     private void OnTriggerEnter2D(Collider2D other) {

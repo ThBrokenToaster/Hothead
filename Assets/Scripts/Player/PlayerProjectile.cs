@@ -34,11 +34,9 @@ public class PlayerProjectile : MonoBehaviour {
             fireTimer = fireRate;
 
 			// different projectiles were removed, as the inventory system will change
-			if (player.facingRight) {
-				Instantiate(projectiles[0], player.hand.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-			} else if (!player.facingRight) {
-				Instantiate(projectiles[0], player.hand.position, Quaternion.Euler(new Vector3(0, 0, 180)));
-			}
+			projectiles[0].GetComponent<ProjectileController>().facingRight = player.facingRight;
+			GameObject p = Instantiate(projectiles[0], player.hand.transform.position, Quaternion.identity);
+
            
         }
     }
