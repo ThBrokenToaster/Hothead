@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour {
     public PlayerInteract interact;
     
     private Rigidbody2D rb;
+    private SpriteRenderer sp;
     [HideInInspector]
     public Animator animator;
+    [HideInInspector]
     public AudioSource audioSource;
 
     // General
-    public float maxSpeed;
+    public float xSpeed;
     public bool facingRight = true;
     public State state = State.idle;
 
@@ -61,46 +63,47 @@ public class PlayerController : MonoBehaviour {
         projectile = GetComponent<PlayerProjectile>();
         interact = GetComponent<PlayerInteract>();
         audioSource = GetComponent<AudioSource>();
+        sp = GetComponent<SpriteRenderer>();
 	}
 
 	void FixedUpdate () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        float move = Input.GetAxis("Horizontal");
+        float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
+        float velY = rb.velocity.y;
 
         // Flip player if needed
-        if (move != 0 && move > 0 != facingRight) {
-            Flip();
+        if (velX != 0) {
+            sp.flipX = velX < 0;
         }
 
         // Set playerState
         if (state != State.melee) {
-            if (move == 0f) {
+            if (velX == 0f) {
                 state = State.idle;
             } else {
                 state = State.walk;
             }
         }
 
-        // Apply horizontal movement
-        if (state == State.walk) {
-            rb.velocity = new Vector2(move * maxSpeed, rb.velocity.y);
-            // rb.AddForce(new Vector2(move * maxSpeed, 0));
-        } else if (state == State.melee) {
-            rb.velocity = new Vector2(0 , rb.velocity.y);
+        if (state == State.melee) {
+            velX = 0;
         }
 
         // Jumping
-        if (grounded && Input.GetButtonDown("Jump")) {
+        if (grounded && Input.GetButton("Jump")) {
             grounded = false;
-            rb.AddForce(new Vector2(0, jumpHeight));
+            velY = jumpHeight;
         }
 
         // Smart Jump
-        if (rb.velocity.y < 0) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        if (velY < 0) {
+            velY += Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        } else if (velY > 0 && !Input.GetButton("Jump")) {
+            velY += Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+
+
+        rb.velocity = new Vector2(velX , velY);
 
         // Component Updates
         melee.MeleeUpdate();

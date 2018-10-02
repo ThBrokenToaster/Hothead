@@ -333,7 +333,7 @@ MonoBehaviour:
   interact: {fileID: 0}
   animator: {fileID: 0}
   audioSource: {fileID: 0}
-  maxSpeed: 6
+  xSpeed: 5
   facingRight: 1
   state: 0
   hand: {fileID: 4838271969848332}
@@ -343,7 +343,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 4245508387262806}
-  jumpHeight: 550
+  jumpHeight: 8
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
 --- !u!114 &114072705263978088

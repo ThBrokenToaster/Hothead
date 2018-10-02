@@ -343,10 +343,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328142741}
-  - {fileID: 311194047}
-  - {fileID: 582974751}
   - {fileID: 1902439471}
   - {fileID: 1239673558}
+  - {fileID: 311194047}
+  - {fileID: 582974751}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -381,7 +381,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 271278641}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &311194048
 TilemapCollider2D:
@@ -11304,7 +11304,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 311194046}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 71e437b4458b170479f243e24878259d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -11587,7 +11587,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 271278641}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &582974752
 TilemapRenderer:
@@ -12984,7 +12984,7 @@ Transform:
   m_Children:
   - {fileID: 2057966432}
   m_Father: {fileID: 271278641}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1239673559
 BoxCollider2D:
@@ -13220,7 +13220,7 @@ Transform:
   m_Children:
   - {fileID: 196777799}
   m_Father: {fileID: 271278641}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1902439472
 BoxCollider2D:
