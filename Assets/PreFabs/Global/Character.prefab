@@ -182,12 +182,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.9492651, y: -0.06372821}
-      - {x: 1.4494616, y: 0.79829514}
-      - {x: 0.51235485, y: 0.81863344}
-      - {x: -0.22133493, y: -0.047902405}
-      - {x: 0.4933716, y: -0.90020996}
-      - {x: 1.5164633, y: -0.82287043}
+    - - {x: 1.1484976, y: -0.028912187}
+      - {x: 0.8575898, y: 0.77508426}
+      - {x: 0.29185402, y: 0.7838174}
+      - {x: -0.10528147, y: -0.14074492}
+      - {x: -0.086894155, y: -0.93502575}
+      - {x: 1.145093, y: -0.9621342}
 --- !u!70 &70043994957165060
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -445,7 +445,7 @@ SpriteRenderer:
   m_SortingLayerID: 1428563931
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 781771cef8d268c49bf8eac414d5f1bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5f437b422b82734fbd09a7e9cd9b683, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

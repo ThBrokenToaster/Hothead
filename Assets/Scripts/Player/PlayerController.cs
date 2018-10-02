@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour {
         float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
         float velY = rb.velocity.y;
 
-        if (velX != 0) {
+        if (velX != 0 && state != State.melee) {
             facingRight = velX > 0;
             Vector3 scale = transform.localScale;
             scale.x = facingRight ? 1 : -1;
