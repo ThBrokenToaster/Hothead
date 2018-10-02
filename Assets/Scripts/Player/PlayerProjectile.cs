@@ -12,6 +12,7 @@ public class PlayerProjectile : MonoBehaviour {
 	public List<GameObject> projectiles;
     public float fireRate = 1f;
     private float fireTimer;
+	private bool fireButtonDown;
 
 	void Start () {
 		player = GetComponent<PlayerController>();
@@ -22,9 +23,13 @@ public class PlayerProjectile : MonoBehaviour {
 		if (fireTimer > 0f) {
 			fireTimer -= Time.deltaTime;
 		}
+		if (!fireButtonDown)
+			fireButtonDown = Input.GetButtonDown("Fire1");
 	}
+
 	public void ProjectileUpdate () {
-        if (Input.GetButtonDown("Fire1")) {
+        if (fireButtonDown) {
+			fireButtonDown = false;
             firePlasma();
         }
 	}

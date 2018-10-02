@@ -11,15 +11,22 @@ public class PlayerMelee : MonoBehaviour {
 
 	// Attacking
     public Collider2D[] attackHitboxes;
-
+    private bool meleeButtonDown;
 
 	void Awake() {
 		player = GetComponent<PlayerController>();
 	}
 	
+    // single frame inputs
+    void Update() {
+        if (!meleeButtonDown)
+            meleeButtonDown = Input.GetButtonDown("Melee");
+    }
+
 	public void MeleeUpdate() {
 		// Melee attack
-        if (Input.GetButtonDown("Melee") && player.grounded && player.state != PlayerController.State.melee) {
+        if (meleeButtonDown && player.grounded && player.state != PlayerController.State.melee) {
+            meleeButtonDown = false;
             player.animator.SetTrigger("melee");
         }
 	}

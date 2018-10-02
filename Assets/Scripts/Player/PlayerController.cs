@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour {
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     
+    private bool jumpButtonDown = false;
+
+
     void Awake() {
 		if (instance == null) {
 			instance = this;
@@ -63,6 +66,12 @@ public class PlayerController : MonoBehaviour {
         interact = GetComponent<PlayerInteract>();
         audioSource = GetComponent<AudioSource>();
 	}
+
+    // using update to get single frame inputs
+    void Update() {
+        if (!jumpButtonDown)
+            jumpButtonDown = Input.GetButtonDown("Jump");
+    }
 
 	void FixedUpdate () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -90,7 +99,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Jumping
-        if (grounded && Input.GetButton("Jump")) {
+        if (grounded && jumpButtonDown && state != State.melee) {
+            jumpButtonDown = false;
             grounded = false;
             velY = jumpHeight;
         }
