@@ -2,23 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class killBox : MonoBehaviour {
-
-    PlayerHealth health;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+public class KillBox : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        health = other.gameObject.GetComponent<PlayerHealth>();
-        health.kill();
+        if (other.GetComponent<PlayerHealth>() != null) {
+            other.GetComponent<PlayerHealth>().Kill();
+        }
     }
 }

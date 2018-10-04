@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class destroyThis : MonoBehaviour {
+/*
+ * Destroys gameObject after set amount of time
+ */
+public class DestroyThis : MonoBehaviour {
 
     public float timer;
 
