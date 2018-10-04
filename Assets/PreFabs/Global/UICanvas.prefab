@@ -511,7 +511,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: '[paused]'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8ac54c5eb99795b4e990c226c080ef6f, type: 2}
   m_sharedMaterial: {fileID: 21364934709830268, guid: 8ac54c5eb99795b4e990c226c080ef6f,
     type: 2}
   m_fontSharedMaterials: []
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
   m_inputSource: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
