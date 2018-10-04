@@ -18,9 +18,9 @@ public class PlayerMeleeCollider : MonoBehaviour {
         // enabled, so this just moves the collider
         // slightly so it will always work. 
         if (e) {
-            transform.position += Vector3.one * .001f;
+            transform.position += Vector3.forward * .001f;
         } else {
-            transform.position -= Vector3.one * .001f;
+            transform.position -= Vector3.forward * .001f;
         }
     }
 
