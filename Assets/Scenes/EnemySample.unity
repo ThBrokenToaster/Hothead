@@ -271,7 +271,7 @@ MonoBehaviour:
   drop: {fileID: 0}
   knockbackMultiplier: 1
   damageAmount: 1
-  damageRate: 1
+  damageRate: 0.5
   knockbackAmount: 10
 --- !u!61 &41346841
 BoxCollider2D:

@@ -77,8 +77,8 @@ public class BasicEnemy : DamageableAbstract {
         Gizmos.DrawLine(detect.transform.position, detect.transform.position + Vector3.down*platDetect);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.GetComponent<DamageableAbstract>() != null) {
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.GetComponent<DamageableAbstract>() != null && nextDamage < Time.time) {
             other.GetComponent<DamageableAbstract>().Damage(damageAmount);
             nextDamage = Time.time + damageRate;
 
