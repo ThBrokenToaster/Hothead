@@ -17,7 +17,7 @@ public class MainCameraController : MonoBehaviour {
 		} else if (instance != this) {
 			Destroy(gameObject);    
 		}
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 		mainCamera = GetComponent<Camera>();
 	}
 
