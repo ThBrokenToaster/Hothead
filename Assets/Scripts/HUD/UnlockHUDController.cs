@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/*
+ * Subcomponent of HUDController, controls the UI for unlocks
+ */
 public class UnlockHUDController : MonoBehaviour {
 
 	private UnlockEvent unlockEvent;

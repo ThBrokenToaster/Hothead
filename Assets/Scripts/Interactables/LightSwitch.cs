@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * OUTDATED - interactable that turns on/off connected lights
+ */
 public class LightSwitch : InteractableAbstract {
 
 	public Light[] connectedLights;

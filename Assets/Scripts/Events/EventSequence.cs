@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * An array of Events to be triggered in order
+ */
 public class EventSequence {
 	public EventAbstract[] events;
 	private int index;

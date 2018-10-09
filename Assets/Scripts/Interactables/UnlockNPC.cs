@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * NPC that triggers an unlock for the player during dialogue
+ * Child object is a marker showing the player they can interact
+ */
 public class UnlockNPC : InteractableAbstract {
 	private SpriteRenderer marker;
 
