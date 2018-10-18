@@ -14,9 +14,11 @@ public class MainCameraController : MonoBehaviour {
 	[HideInInspector] public CinemachineBrain brain;
 
 	public GameObject defaultVirtualCameraPrefab;
-	public CinemachineVirtualCamera defaultVirtualCamera;
+	[HideInInspector] public CinemachineVirtualCamera defaultVirtualCamera;
 
 	private Vector3 cameraOffset = new Vector3(0,0,-10);
+
+	private CinemachineBlendDefinition defaultBlendTemp;
 
 	void Awake() {
 		if (instance == null) {
@@ -37,20 +39,42 @@ public class MainCameraController : MonoBehaviour {
 		vc.Priority = 0;
 		defaultVirtualCamera = vc;
 		DontDestroyOnLoad(g);
+
+		// Subscribe to game manager's OnSceneChange
+        GameManager.instance.Refresh += Refresh;
+		GameManager.instance.OnPause += OnPause;
+		GameManager.instance.OnUnpause += OnUnpause;
 	}
+
+	
 
 	public void Refresh() {
 		//Create a new default virtual camera centered on the player, destroy the previous one
 		Vector3 targetPos = PlayerController.instance.transform.position + cameraOffset;
-		GameObject g = Instantiate(defaultVirtualCameraPrefab, targetPos, Quaternion.identity);
-		CinemachineVirtualCamera vc = g.GetComponent<CinemachineVirtualCamera>();
+		GameObject newDefaultCamera = Instantiate(defaultVirtualCameraPrefab, targetPos, Quaternion.identity);
+		DontDestroyOnLoad(newDefaultCamera);
+
+		CinemachineVirtualCamera vc = newDefaultCamera.GetComponent<CinemachineVirtualCamera>();
 		vc.Follow = PlayerController.instance.transform;
 		vc.Priority = 0;
 
 		Destroy(defaultVirtualCamera.gameObject);
 		defaultVirtualCamera = vc;
-		DontDestroyOnLoad(g);
-	
+	}
+
+	public void OnPause() {
+		HideWorldSpaceUI();
+
+		// Set default camera mode to Cut
+		defaultBlendTemp = brain.m_DefaultBlend;
+		brain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
+	}
+
+	public void OnUnpause() {
+		ShowWorldSpaceUI();
+
+		// Restore default camera mode
+		brain.m_DefaultBlend = defaultBlendTemp;
 	}
 
 	public void HideWorldSpaceUI() {

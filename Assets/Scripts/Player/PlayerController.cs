@@ -67,6 +67,10 @@ public class PlayerController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 	}
 
+    void Start() {
+        GameManager.instance.Refresh += Refresh;
+    }
+
     // using update to get single frame inputs
     void Update() {
         if (!jumpButtonDown)
