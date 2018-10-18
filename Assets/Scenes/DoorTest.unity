@@ -523,7 +523,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 16384520dcd79a948a5a8ec2978715b9, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1000460537
@@ -535,15 +536,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4246813807001468, guid: 85fcc65d01c0c8d4c9e222c349d811c2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.64
+      value: 30.41
       objectReference: {fileID: 0}
     - target: {fileID: 4246813807001468, guid: 85fcc65d01c0c8d4c9e222c349d811c2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.29
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: 4246813807001468, guid: 85fcc65d01c0c8d4c9e222c349d811c2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4246813807001468, guid: 85fcc65d01c0c8d4c9e222c349d811c2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -565,11 +566,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114560638875781786, guid: 85fcc65d01c0c8d4c9e222c349d811c2,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2059736018}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85fcc65d01c0c8d4c9e222c349d811c2, type: 2}
   m_IsPrefabAsset: 0
@@ -1153,11 +1149,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &2059736018 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4978239987823868, guid: 16384520dcd79a948a5a8ec2978715b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 987140912}
 --- !u!1 &2126715923
 GameObject:
   m_ObjectHideFlags: 0

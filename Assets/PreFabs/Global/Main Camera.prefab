@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 20546431157711632}
   - component: {fileID: 124044641347993894}
   - component: {fileID: 81919419501894422}
-  - component: {fileID: 114560638875781786}
   - component: {fileID: 114731078651402346}
   - component: {fileID: 114322293625649732}
   m_Layer: 0
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1249323432347998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.64, y: 1.29, z: -10}
+  m_LocalPosition: {x: 30.41, y: 2.36, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,11 +64,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 1
-  orthographic size: 4.4115663
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -110,8 +109,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
-  m_CustomBlends: {fileID: 0}
+    m_Time: 0.5
+  m_CustomBlends: {fileID: 11400000, guid: 4a58084cc57d6c3409b5412d7e980c44, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -122,20 +121,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114560638875781786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1249323432347998}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe471965b779e44983233068005063b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  cameraSmoothingEffect: 4
-  yLowerBound: -100
 --- !u!114 &114731078651402346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c48e2155e559448ba82dc0205287ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  brain: {fileID: 0}
+  defaultVirtualCameraPrefab: {fileID: 1136220719274504, guid: 48f305403d457c34393ac8891de4867a,
+    type: 2}
+  defaultVirtualCamera: {fileID: 0}
 --- !u!124 &124044641347993894
 Behaviour:
   m_ObjectHideFlags: 1

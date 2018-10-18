@@ -14,13 +14,13 @@ public class PlayerLoader : MonoBehaviour {
 	void Awake() {
 		if(loaded) { 
 			Destroy(gameObject);
+			return;
 		} else {
 			loaded = true;
 		}
 
 		player = Instantiate(player, transform.position, Quaternion.identity);
-		//playerCamera = Instantiate(playerCamera, transform.position + cameraOffset, Quaternion.identity);
-		//playerCamera.GetComponent<CameraFollow2DPlat>().target = player.transform;
+		playerCamera = Instantiate(playerCamera, transform.position + cameraOffset, Quaternion.identity);
 
 		foreach(GameObject obj in otherGlobals) {
 			Instantiate(obj, transform.position, Quaternion.identity);
