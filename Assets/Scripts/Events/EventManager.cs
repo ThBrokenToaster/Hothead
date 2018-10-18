@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Subcomponent of GameManager, handles events sequences (dialogue, cutscenes)
+ */
 public class EventManager : MonoBehaviour {
 
 	private EventSequence currentSeq;

@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Simple NPC that can be talked to
+ * NPC that triggers an unlock for the player during dialogue
  * Child object is a marker showing the player they can interact
  */
-public class DialogueNPC : InteractableAbstract {
+public class UnlockNPC : InteractableAbstract {
 	private SpriteRenderer marker;
 
-	public DialogueEvent[] dialogue;
-	private int index = 0;
-	public bool repeatLastDialogue;
+	public DialogueEvent preUnlockDialogue;
+	public UnlockEvent unlock;
+	public DialogueEvent postUnlockDialogue;
+
+	private bool givenUnlock = false;
+	public bool repeatPostUnlockDialogue = true;
 
 
 	void Start() {
@@ -31,15 +34,15 @@ public class DialogueNPC : InteractableAbstract {
 	override public bool CanInteract() {
 		return PlayerController.instance.grounded && 
 			   PlayerController.instance.state != PlayerController.State.melee &&
-			   (repeatLastDialogue || index < dialogue.Length);
+				(!givenUnlock || repeatPostUnlockDialogue);
 	}
 
 	override public void Interact() {
-		if (index < dialogue.Length) {
-			GameManager.instance.eventManager.StartEventSequence(dialogue[index]);
-			index++;
-		} else if(repeatLastDialogue) {
-			GameManager.instance.eventManager.StartEventSequence(dialogue[dialogue.Length - 1]);
+		if (!givenUnlock) {
+			givenUnlock = true;
+			GameManager.instance.eventManager.StartEventSequence(preUnlockDialogue, unlock, postUnlockDialogue);
+		} else if (repeatPostUnlockDialogue) {
+			GameManager.instance.eventManager.StartEventSequence(postUnlockDialogue);
 		}
 	}
 }

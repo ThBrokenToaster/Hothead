@@ -14,8 +14,9 @@ public class HUDController : MonoBehaviour {
     public Image damagedEffect;
 	public GameObject pauseMenu;
 
-	private Animator animator;
-	public DialogueHUDController dialogue;
+	public Animator animator;
+	[HideInInspector] public DialogueHUDController dialogue;
+	[HideInInspector] public UnlockHUDController unlock;
 
 	private GameManager.Event postFadeEvent;
 
@@ -29,6 +30,7 @@ public class HUDController : MonoBehaviour {
 
 		animator = GetComponent<Animator>();
 		dialogue = GetComponent<DialogueHUDController>();
+		unlock = GetComponent<UnlockHUDController>();
 	}
 
 	void Start () {
