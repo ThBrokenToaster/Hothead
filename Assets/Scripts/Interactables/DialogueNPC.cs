@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Simple NPC that can be talked to
+ * Child object is a marker showing the player they can interact
+ */
 public class DialogueNPC : InteractableAbstract {
 	private SpriteRenderer marker;
 

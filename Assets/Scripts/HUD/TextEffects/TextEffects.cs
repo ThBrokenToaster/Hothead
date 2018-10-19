@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/*
+ * Applies text effects on a TMPro object
+ * Currently used in dialogue text
+ */
 public class TextEffects : MonoBehaviour {
 
 	public float speedMultiplier = 1.0f;

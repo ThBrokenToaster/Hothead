@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * INCOMPLETE - going to be an NPC that heals player during dialogue
+ */
 public class HealerDemo : InteractableAbstract {
 	private SpriteRenderer marker;
 	public DialogueEvent dialogue;

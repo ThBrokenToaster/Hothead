@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * On load, will delete itself and instantiate all the needed
+ * global gameObjects from their prefabs (player, camera, gameManager, HUD, ...)
+ */
 public class PlayerLoader : MonoBehaviour {
 	public GameObject player;
 	public GameObject playerCamera;

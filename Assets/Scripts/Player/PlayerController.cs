@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
     public PlayerProjectile projectile;
     [HideInInspector]
     public PlayerInteract interact;
+    [HideInInspector]
+    public PlayerUnlock unlock;
     
     private Rigidbody2D rb;
     [HideInInspector]
@@ -46,9 +48,6 @@ public class PlayerController : MonoBehaviour {
     public float jumpHeight;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    
-    private bool jumpButtonDown = false;
-
 
     void Awake() {
 		if (instance == null) {
@@ -64,20 +63,15 @@ public class PlayerController : MonoBehaviour {
         melee = GetComponent<PlayerMelee>();
         projectile = GetComponent<PlayerProjectile>();
         interact = GetComponent<PlayerInteract>();
+        unlock = GetComponent<PlayerUnlock>();
         audioSource = GetComponent<AudioSource>();
 	}
-
-    void Start() {
+  
+  void Start() {
         GameManager.instance.Refresh += Refresh;
-    }
+  }
 
-    // using update to get single frame inputs
-    void Update() {
-        if (!jumpButtonDown)
-            jumpButtonDown = Input.GetButtonDown("Jump");
-    }
-
-	void FixedUpdate () {
+	void Update () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
         float velY = rb.velocity.y;
@@ -103,8 +97,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Jumping
-        if (grounded && jumpButtonDown && state != State.melee) {
-            jumpButtonDown = false;
+        if (grounded && Input.GetButtonDown("Jump") && state != State.melee) {
             grounded = false;
             velY = jumpHeight;
         }

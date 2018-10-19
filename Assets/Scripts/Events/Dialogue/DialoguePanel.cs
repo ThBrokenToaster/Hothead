@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+/*
+ * Single dialogue window
+ */
 [System.Serializable]
 public class DialoguePanel {
 	public string nameText;

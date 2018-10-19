@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Controls a dialogue event, stores a collection of dialogue panels
+ */
 [System.Serializable]
 public class DialogueEvent : EventAbstract {
 	public DialoguePanel[] panels;
