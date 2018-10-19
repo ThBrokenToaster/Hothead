@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour {
 	
 	public delegate void Event();
 
+	public event Event Refresh;
+	public event Event LateRefresh;
+	public event Event OnPause;
+	public event Event OnUnpause;
+
 	void Awake() {
 		// ensures only one GameManager can exist
 		if (instance == null) {
@@ -60,7 +65,7 @@ public class GameManager : MonoBehaviour {
 
 		Time.timeScale = 0f;
 
-		MainCameraController.instance.HideWorldSpaceUI();
+		OnPause();
 	}
 
 	public void UnPauseGame() {
@@ -70,7 +75,7 @@ public class GameManager : MonoBehaviour {
 
 		Time.timeScale = 1f;
 
-		MainCameraController.instance.ShowWorldSpaceUI();
+		OnUnpause();
 	}
 
 	// load new scene, w/ player starting at a certain door
@@ -121,15 +126,16 @@ public class GameManager : MonoBehaviour {
 
 		// refresh unless its the first load
 		if (loadState != LoadState.firstLoad) {
-			Refresh();
+			// Everything that has subscribed to the event will be notified
+			StartCoroutine(RefreshWithLate());
 		}
 
 		loadState = LoadState.loaded;
 	}
 
-	// Refresh is called when the player is reloaded (resets player)
-	public void Refresh() {
-		PlayerController.instance.Refresh();
-		MainCameraController.instance.Refresh();
+	IEnumerator RefreshWithLate() {
+		if (Refresh != null) Refresh();
+		yield return null;
+		if (LateRefresh != null) LateRefresh();
 	}
 }

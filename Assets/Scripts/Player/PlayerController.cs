@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour {
         unlock = GetComponent<PlayerUnlock>();
         audioSource = GetComponent<AudioSource>();
 	}
+  
+  void Start() {
+        GameManager.instance.Refresh += Refresh;
+  }
 
 	void Update () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
