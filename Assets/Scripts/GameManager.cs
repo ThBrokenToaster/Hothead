@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour {
 	public event Event OnPause;
 	public event Event OnUnpause;
 
+	public static List<string> openScenes = new List<string>();
+	public static string linkName;
+	public static SceneLink sceneLink = null;
+
 	void Awake() {
 		// ensures only one GameManager can exist
 		if (instance == null) {
@@ -110,14 +114,20 @@ public class GameManager : MonoBehaviour {
 	
 	void OnEnable() {
       	SceneManager.sceneLoaded += OnSceneLoaded;
+		SceneManager.sceneUnloaded += OnSceneUnloaded;
   	}
  
   	void OnDisable() {
     	SceneManager.sceneLoaded -= OnSceneLoaded;
+		SceneManager.sceneUnloaded -= OnSceneUnloaded;
   	}
  
 	// Called when a new scene starts
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+		Debug.Log("Scene loaded: " + scene.name);
+
+		openScenes.Add(scene.name);
+
 		// move player to door
 		if (loadState == LoadState.loadingToDoor) {
 			DoorController.FindDoor(loadToDoorName).MovePlayer();
@@ -131,6 +141,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		loadState = LoadState.loaded;
+	}
+
+	private void OnSceneUnloaded(Scene scene) {
+		Debug.Log("Scene unloaded: " + scene.name);
+		openScenes.Remove(scene.name);
 	}
 
 	IEnumerator RefreshWithLate() {
