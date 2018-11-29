@@ -31,7 +31,7 @@ public class PlayerMelee : MonoBehaviour {
             }
         }
 		// Melee attack
-        if (Input.GetButtonDown("Melee") && player.grounded && player.state != PlayerController.State.melee) {
+        if (Input.GetButtonDown("Melee") && player.grounded && player.state == PlayerController.State.idle) {
             timeSinceLastAttack = 0f;
             comboActive = true;
             comboIndex++;
@@ -44,6 +44,10 @@ public class PlayerMelee : MonoBehaviour {
             } else {
                 player.animator.SetTrigger("meleePunch");
             }
+        }
+
+        if (player.state == PlayerController.State.melee) {
+            player.rb.velocity = new Vector2(0f, player.rb.velocity.y);
         }
 	}
 
