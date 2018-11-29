@@ -25,6 +25,7 @@ public class PlayerDash : MonoBehaviour {
 			dashDirection = player.facingRight ? new Vector2(1,0) : new Vector2(-1,0);
 			player.animator.SetBool("dash", true);
 			StartCoroutine("Dash");
+			MainCameraController.instance.ApplyShake(dashTime, 1);
         }
 		if (player.state == PlayerController.State.dash) {
 			player.rb.velocity = dashDirection.normalized * dashSpeed;
