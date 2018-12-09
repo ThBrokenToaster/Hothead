@@ -32,7 +32,7 @@ public class Parallax : MonoBehaviour {
 
 			float backgroundTargetX = backgrounds[i].position.x + parallax;
 
-			Vector3 backgroundTargetPos = new Vector3(backgroundTargetX, playerLocation.position.y, backgrounds[i].position.z);
+			Vector3 backgroundTargetPos = new Vector3(backgroundTargetX, Vector3.Lerp(backgrounds[i].position, playerLocation.position, smoothing).y, backgrounds[i].position.z);
 
 			backgrounds[i].position = Vector3.Lerp(backgrounds[i].position, backgroundTargetPos, smoothing * Time.deltaTime);
 		}
