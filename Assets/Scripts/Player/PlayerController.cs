@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     
     public static PlayerController instance;
-    public enum State { idle, walk, melee };
+    public enum State { idle, melee, dash };
 
     // Player components
     [HideInInspector]
@@ -16,13 +16,16 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public PlayerMelee melee;
     [HideInInspector]
+    public PlayerDash dash;
+    [HideInInspector]
     public PlayerProjectile projectile;
     [HideInInspector]
     public PlayerInteract interact;
     [HideInInspector]
     public PlayerUnlock unlock;
     
-    private Rigidbody2D rb;
+    [HideInInspector]
+    public Rigidbody2D rb;
     [HideInInspector]
     public Animator animator;
     [HideInInspector]
@@ -61,6 +64,7 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         health =  GetComponent<PlayerHealth>();
         melee = GetComponent<PlayerMelee>();
+        dash = GetComponent<PlayerDash>();
         projectile = GetComponent<PlayerProjectile>();
         interact = GetComponent<PlayerInteract>();
         unlock = GetComponent<PlayerUnlock>();
@@ -76,28 +80,15 @@ public class PlayerController : MonoBehaviour {
         float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
         float velY = rb.velocity.y;
 
-        if (velX != 0 && state != State.melee) {
+        if (velX != 0 && state == State.idle) {
             facingRight = velX > 0;
             Vector3 scale = transform.localScale;
             scale.x = facingRight ? 1 : -1;
             transform.localScale = scale;
         }
 
-        // Set playerState
-        if (state != State.melee) {
-            if (velX == 0f) {
-                state = State.idle;
-            } else {
-                state = State.walk;
-            }
-        }
-
-        if (state == State.melee) {
-            velX = 0;
-        }
-
         // Jumping
-        if (grounded && Input.GetButtonDown("Jump") && state != State.melee) {
+        if (grounded && Input.GetButtonDown("Jump") && state == State.idle) {
             grounded = false;
             velY = jumpHeight;
         }
@@ -109,12 +100,12 @@ public class PlayerController : MonoBehaviour {
             velY += Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
-
         rb.velocity = new Vector2(velX , velY);
 
         // Component Updates
         melee.MeleeUpdate();
         projectile.ProjectileUpdate();
+        dash.DashUpdate();
         
         // Switching Items
         if (Input.GetButtonDown("Fire3")) {
@@ -126,7 +117,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Set playAnim triggers
-        animator.SetBool("isWalking", state == State.walk);
+        animator.SetBool("isWalking", velX != 0f);
         animator.SetBool("isGrounded", grounded);
         animator.SetFloat("verticalSpeed", rb.velocity.y);
 	}

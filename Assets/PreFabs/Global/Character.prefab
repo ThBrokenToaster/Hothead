@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114257087328135358}
   - component: {fileID: 114526661872193520}
   - component: {fileID: 114834631710959580}
+  - component: {fileID: 114810365537593490}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -188,7 +189,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &60120279604615722
 PolygonCollider2D:
@@ -391,9 +392,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   melee: {fileID: 0}
+  dash: {fileID: 0}
   projectile: {fileID: 0}
   interact: {fileID: 0}
   unlock: {fileID: 0}
+  rb: {fileID: 0}
   animator: {fileID: 0}
   audioSource: {fileID: 0}
   xSpeed: 5
@@ -474,6 +477,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   knockback: 2
+--- !u!114 &114810365537593490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228647328878596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e9dc732c5a5134da2583b83ef2962f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashTime: 0.2
+  dashSpeed: 16
 --- !u!114 &114834631710959580
 MonoBehaviour:
   m_ObjectHideFlags: 1

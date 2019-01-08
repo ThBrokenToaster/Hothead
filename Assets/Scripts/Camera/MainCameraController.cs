@@ -62,6 +62,23 @@ public class MainCameraController : MonoBehaviour {
 		defaultVirtualCamera = vc;
 	}
 
+	public void ApplyShake(float timeout, float intensity) {
+		CinemachineVirtualCamera vcam = brain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
+		CinemachineBasicMultiChannelPerlin noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+		StartCoroutine(ShakeCoroutine(noise, timeout, intensity));
+	}
+
+	IEnumerator ShakeCoroutine(CinemachineBasicMultiChannelPerlin noise, float timeout, float intensity) {
+		SetNoise(noise, intensity);
+		yield return new WaitForSeconds(timeout);
+		SetNoise(noise, 0);
+	} 
+
+	private void SetNoise(CinemachineBasicMultiChannelPerlin noise, float intensity) {
+		noise.m_AmplitudeGain = intensity * .2f;
+		noise.m_FrequencyGain = intensity * 2f;
+	}
+
 	public void OnPause() {
 		HideWorldSpaceUI();
 
