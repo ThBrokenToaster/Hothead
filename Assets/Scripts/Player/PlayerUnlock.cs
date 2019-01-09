@@ -10,7 +10,7 @@ using UnityEngine;
 public class PlayerUnlock : MonoBehaviour {
 
 	private PlayerController player;
-	private List<Unlock> unlocks = new List<Unlock>();
+	public List<Unlock> unlocks = new List<Unlock>();
 
 	void Awake() {
         player = GetComponent<PlayerController>();
