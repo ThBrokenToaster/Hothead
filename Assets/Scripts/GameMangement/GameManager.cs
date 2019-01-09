@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	private string loadToScene;
 
 	public EventManager eventManager;
+	public SaveManager saveManager;
 	
 	public delegate void Event();
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 
 		eventManager = GetComponent<EventManager>();
+		saveManager = GetComponent<SaveManager>();
 	}
 
 	void Update() {

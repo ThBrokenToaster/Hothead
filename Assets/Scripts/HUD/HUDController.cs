@@ -17,6 +17,7 @@ public class HUDController : MonoBehaviour {
 	public Animator animator;
 	[HideInInspector] public DialogueHUDController dialogue;
 	[HideInInspector] public UnlockHUDController unlock;
+	[HideInInspector] public PauseHUDController pause;
 
 	private GameManager.Event postFadeEvent;
 
@@ -31,6 +32,7 @@ public class HUDController : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		dialogue = GetComponent<DialogueHUDController>();
 		unlock = GetComponent<UnlockHUDController>();
+		pause = GetComponent<PauseHUDController>();
 	}
 
 	void Start () {

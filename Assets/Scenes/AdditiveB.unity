@@ -113,6 +113,278 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &138147802
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[3].panels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[4].panels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[2].panels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631533288912910, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212350695633286278, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61392705042894486, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.6871047
+      objectReference: {fileID: 0}
+    - target: {fileID: 61392705042894486, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.2274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 61392705042894486, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.04442048
+      objectReference: {fileID: 0}
+    - target: {fileID: 61392705042894486, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.1058383
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[3].panels.Array.data[0].nameText
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[3].panels.Array.data[0].bodyText
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[3].panels.Array.data[1].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[3].panels.Array.data[1].bodyText
+      value: If you talk to me again,  I will repeat this last conversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[4].panels.Array.data[0].nameText
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[4].panels.Array.data[0].bodyText
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[4].panels.Array.data[1].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[4].panels.Array.data[1].bodyText
+      value: If you talk to me again,  I will repeat this last conversation
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[0].nameText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[0].bodyText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[1].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[1].bodyText
+      value: The name is <color=blue>Simon</color> by the way.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[2].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[2].bodyText
+      value: You can skip the text reveal by pressing the <color=red>'interact'</color>
+        button again. The key should be currently mapped to <color=red>'e'</color>.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[3].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[0].panels.Array.data[3].bodyText
+      value: Talk to me again and I'll show off the different functionality of the
+        system.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[0].nameText
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[0].bodyText
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[1].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[1].bodyText
+      value: I can talk extremely fast - such as this sentence which is set to 3x
+        the normal text speech.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[1].settings.useCustomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[1].settings.speedMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[2].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[2].bodyText
+      value: I can also talk really slow, like right now. This is set to half the
+        normal speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[2].settings.useCustomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[2].settings.speedMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[3].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[3].bodyText
+      value: The text can also <shake>shake</shake> like this. It is really <color=red><shake>creepy</shake></color>
+        if you ask me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[4].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[1].panels.Array.data[4].bodyText
+      value: There is also this <wave>wave</wave> effect. I think it is <wave><color=blue>relaxing</color></wave>.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[2].panels.Array.data[0].nameText
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[2].panels.Array.data[0].bodyText
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[2].panels.Array.data[1].nameText
+      value: Simon
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432150072292896, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+        type: 2}
+      propertyPath: dialogue.Array.data[2].panels.Array.data[1].bodyText
+      value: If you talk to me again,  I will repeat this last conversation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ac01d10cba0b9a40ae40012a56f8012, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &244494890
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +609,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4409182866703048, guid: 876e3d1c254739d4490d96ba13d20f57, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
@@ -1467,13 +1739,14 @@ Prefab:
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[13].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[13].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300024, guid: 8255db6d5cd5e474083ee693ff04aa57,
+        type: 3}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_TileMatrixArray.Array.data[0].m_RefCount
@@ -42897,7 +43170,7 @@ Prefab:
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_Tiles.Array.data[792].second.m_TileSpriteIndex
-      value: 3
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
@@ -55443,14 +55716,13 @@ Prefab:
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_TileSpriteArray.Array.data[3].m_Data
       value: 
-      objectReference: {fileID: 21300024, guid: 8255db6d5cd5e474083ee693ff04aa57,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8195094280069222102, guid: 876e3d1c254739d4490d96ba13d20f57,
         type: 2}
       propertyPath: m_Tiles.Array.data[1276].first.x
@@ -58424,6 +58696,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 876e3d1c254739d4490d96ba13d20f57, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1241667546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1767775374351690, guid: 1ac01d10cba0b9a40ae40012a56f8012,
+    type: 2}
+  m_PrefabInternal: {fileID: 138147802}
+--- !u!114 &1241667551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241667546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf4fb429ad43524fb18bef8ab721659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: dialogueNPCtest
 --- !u!1001 &1509258184
 Prefab:
   m_ObjectHideFlags: 0
