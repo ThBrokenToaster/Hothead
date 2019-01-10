@@ -1,23 +1,27 @@
 fileFormatVersion: 2
-guid: cb3833010da119f488a554c25b177afe
+guid: 5071ec74f83d2b54ba9ccde50d20c25f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Idle_0
-    21300002: Idle_1
-    21300004: Idle_2
-    21300006: Idle_3
-    21300008: Idle_4
-    21300010: Idle_5
-    21300012: Idle_6
-    21300014: Idle_7
-    21300016: Idle_8
-    21300018: Idle_9
-    21300020: Idle_10
-    21300022: Idle_11
-    21300024: Idle_12
-    21300026: Idle_13
-    21300028: Idle_14
-    21300030: Idle_15
+    21300000: SliceAttack_0
+    21300002: SliceAttack_1
+    21300004: SliceAttack_2
+    21300006: SliceAttack_3
+    21300008: SliceAttack_4
+    21300010: SliceAttack_5
+    21300012: SliceAttack_6
+    21300014: SliceAttack_7
+    21300016: SliceAttack_8
+    21300018: SliceAttack_9
+    21300020: SliceAttack_10
+    21300022: SliceAttack_11
+    21300024: SliceAttack_12
+    21300026: SliceAttack_13
+    21300028: SliceAttack_14
+    21300030: SliceAttack_15
+    21300032: SliceAttack_16
+    21300034: SliceAttack_17
+    21300036: SliceAttack_18
+    21300038: SliceAttack_19
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -122,12 +126,192 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: SliceAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4988c159ae064864c9f6cd5377daa069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef7e56d3dc7e98448fca72632fc868e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cdea0a2731b0a24fa59d579e0d25c03
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14989b557efda3c49ad9d919c0548355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870f4e18264a3fe42b10ebb707494e39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e38375ecd09772428d8aa01e8b787e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f346118109a7cdd4e8e699aa5872f7de
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e6c7ebc41b17144ab6c389fa171ade
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774afa5a2232b0346a0bdcb844c1b161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliceAttack_9
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -136,38 +320,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baa4b5adcab316d47b481489a5855b2b
+      spriteID: 063c4aad49dc5414cbe52f8cc0ab707c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de3a36f8fbc04884e852b0b3365dca4b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_2
+      name: SliceAttack_10
       rect:
         serializedVersion: 2
         x: 128
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,18 +340,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 525fef21352d65941b07cb0fc27b8eee
+      spriteID: e165a2c07bd2f3f4bbac0bbc29ebbf0e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: SliceAttack_11
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,18 +360,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aad5099871b031b4c8f6bc39e098f4ca
+      spriteID: 718d36c232dce9048be9d10c0c47e8de
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_4
+      name: SliceAttack_12
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,38 +380,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aa7c10cdac4fa0418c40da7757b07cd
+      spriteID: 9cbbea0f3166db04c9a06512d5b9c6f6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3132f83adb2388e49bd566c0fab46886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_6
+      name: SliceAttack_13
       rect:
         serializedVersion: 2
         x: 128
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -256,18 +400,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bf934c48f32dd64fa71d66bfe501ee6
+      spriteID: a2511c1416dd879429871fe78bf0b192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_7
+      name: SliceAttack_14
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -276,18 +420,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e88a1aa2d9b1e1d419010c0282c22f19
+      spriteID: 23a60334765404e4585b9a05ca775265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_8
+      name: SliceAttack_15
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -296,38 +440,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 224ea6e75c14bcd42bced4eb4f837325
+      spriteID: 683a85fd5f8cbb84c9c8c93f372c4ba7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd857b87ed04670488fae291fddb0aa2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_10
+      name: SliceAttack_16
       rect:
         serializedVersion: 2
         x: 128
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -336,18 +460,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a32670c314aacbf4f967258f119f4e2f
+      spriteID: b4d230fbaf133814c86411652f7ff63a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_11
+      name: SliceAttack_17
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -356,18 +480,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dced8edf6af7714ca56a176c5964b39
+      spriteID: bae72957c3cbe684dbfb8d5f2c94fddb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_12
+      name: SliceAttack_18
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -376,38 +500,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ab46141d761eff4f946ad62c731699b
+      spriteID: b982830f3d980bd49aa257447f6d8d37
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_13
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60344ad92b3f0064984b940381509217
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_14
+      name: SliceAttack_19
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -416,27 +520,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59090675b3254dd4eaf46bf824f886b0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a6a4326706024ca40b9f272b5723a12c
+      spriteID: 3be740633bfe5464a98647f590f79711
       vertices: []
       indices: 
       edges: []
@@ -444,7 +528,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c083088d406f71d4395006760c0ff133
+    spriteID: fdca9d72b91520848bf3ac233f549856
     vertices: []
     indices: 
     edges: []

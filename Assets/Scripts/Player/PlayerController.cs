@@ -48,9 +48,22 @@ public class PlayerController : MonoBehaviour {
     private float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     public Transform groundCheck;
+    public Transform wallCheck;
+    public Transform wallCheckBack;
     public float jumpHeight;
+    public float jumpHeight2;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    public float wallJump;
+    public float stickyForce;
+    bool magnet;
+    bool onWall;
+    bool onWallBack;
+    bool canMove;
+    float jumpTimer;
+    public float jumpDelay;
+    float velX;
+    float velY;
 
     void Awake() {
 		if (instance == null) {
@@ -69,6 +82,7 @@ public class PlayerController : MonoBehaviour {
         interact = GetComponent<PlayerInteract>();
         unlock = GetComponent<PlayerUnlock>();
         audioSource = GetComponent<AudioSource>();
+        canMove = true;
 	}
   
   void Start() {
@@ -77,8 +91,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        float velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
-        float velY = rb.velocity.y;
+        if(canMove) {
+            velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
+            velY = rb.velocity.y;
+        }
 
         if (velX != 0 && state == State.idle) {
             facingRight = velX > 0;
@@ -87,6 +103,7 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = scale;
         }
 
+
         // Jumping
         if (grounded && Input.GetButtonDown("Jump") && state == State.idle) {
             grounded = false;
@@ -94,13 +111,92 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Smart Jump
-        if (velY < 0) {
-            velY += Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (velY > 0 && !Input.GetButton("Jump")) {
-            velY += Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        if (canMove && !onWall && !onWallBack)
+        {
+            if (velY < 0) {
+                velY += Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            } else if (velY > 0 && !Input.GetButton("Jump")) {
+                velY += Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
         }
 
-        rb.velocity = new Vector2(velX , velY);
+
+        if (Time.time > jumpTimer)
+        {
+            canMove = true;
+        }
+        else
+        {
+            canMove = false;
+        }
+
+        //Wall Magneting
+        if (magnet)
+        {
+            if (onWallBack && facingRight)
+            {
+                rb.AddForce(new Vector2(-1 * stickyForce, 0));
+            } else if (onWallBack && !facingRight)
+            {
+                rb.AddForce(new Vector2(stickyForce, 0));
+            }
+
+            if (onWall && facingRight)
+            {
+                rb.AddForce(new Vector2(stickyForce, 0));
+            }
+            else if (onWall && !facingRight)
+            {
+                rb.AddForce(new Vector2(-1 * stickyForce, 0));
+            }
+        }
+
+
+        //Wall Jumping
+        if (!grounded)
+        {
+            if (onWall && Input.GetButtonDown("Jump"))
+            {
+                Debug.Log("WallJump");
+                onWall = false;
+                onWallBack = false;
+                magnet = false;
+                canMove = false;
+                jumpTimer = Time.time + jumpDelay;
+                if (facingRight)
+                {
+                    velX = -wallJump;
+
+                } else
+                {
+                    velX = wallJump;
+                }
+                velY = jumpHeight;
+            }
+
+
+
+
+        
+            if (onWallBack && Input.GetButtonDown("Jump"))
+            {
+                Debug.Log("WallJump2");
+                onWall = false;
+                onWallBack = false;
+                magnet = false;
+                canMove = false;
+                if (!facingRight)
+                {
+                    velX = -wallJump;
+
+                }
+                else
+                {
+                    velX = wallJump;
+                }
+                velY = jumpHeight;
+            }
+        }
 
         // Component Updates
         melee.MeleeUpdate();
@@ -115,6 +211,15 @@ public class PlayerController : MonoBehaviour {
                 equipped = 0;
             }
         }
+
+
+        if (canMove)
+        {
+            onWall = Physics2D.OverlapCircle(wallCheck.position, groundCheckRadius, groundLayer);
+            onWallBack = Physics2D.OverlapCircle(wallCheckBack.position, groundCheckRadius, groundLayer);
+            magnet = true;
+        }
+        rb.velocity = new Vector2(velX , velY);
 
         // Set playAnim triggers
         animator.SetBool("isWalking", velX != 0f);
