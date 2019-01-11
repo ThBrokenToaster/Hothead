@@ -490,6 +490,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashTime: 0.2
   dashSpeed: 16
+  dashAnim:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0016357265
+      value: -0.012530521
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3198771
+      value: 0.9928762
+      inSlope: 0.050416887
+      outSlope: 0.050416887
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.38682628
+    - serializedVersion: 3
+      time: 0.6688384
+      value: 0.9973692
+      inSlope: 0.031309698
+      outSlope: 0.031309698
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.25248337
+    - serializedVersion: 3
+      time: 1.0032959
+      value: -0.018817902
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114834631710959580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -501,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ef6ea9debe1cb4bab89bf5de2fca85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocks: []
 --- !u!114 &114923637507706186
 MonoBehaviour:
   m_ObjectHideFlags: 1

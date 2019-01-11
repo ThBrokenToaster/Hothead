@@ -12,6 +12,8 @@ public class PlayerDash : MonoBehaviour {
 
 	public float dashTime = 2;
 	public float dashSpeed = 5;
+	public AnimationCurve dashAnim;
+	private float dashStartTime;
 	private Vector2 dashDirection;
 
 	void Awake() {
@@ -28,11 +30,13 @@ public class PlayerDash : MonoBehaviour {
 			MainCameraController.instance.ApplyShake(dashTime, 1);
         }
 		if (player.state == PlayerController.State.dash) {
-			player.rb.velocity = dashDirection.normalized * dashSpeed;
+			float multiplier = dashAnim.Evaluate((Time.time - dashStartTime)/dashTime);
+			player.rb.velocity = dashDirection.normalized * dashSpeed * multiplier;
 		}
 	}
 
 	IEnumerator Dash() {
+		dashStartTime = Time.time;
 		yield return new WaitForSeconds(dashTime);
 		player.animator.SetBool("dash", false);
 		player.state = PlayerController.State.idle;

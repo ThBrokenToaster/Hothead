@@ -312,6 +312,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4978239987823868, guid: 16384520dcd79a948a5a8ec2978715b9, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -343,6 +348,111 @@ Prefab:
     - target: {fileID: 4978239987823868, guid: 16384520dcd79a948a5a8ec2978715b9, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[0].value
+      value: -0.012530521
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].time
+      value: 0.3198771
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].value
+      value: 0.9928762
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].outWeight
+      value: 0.38682628
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[0].time
+      value: -0.0016357265
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].inSlope
+      value: 0.050416887
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[1].outSlope
+      value: 0.050416887
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].time
+      value: 0.6688384
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].value
+      value: 0.9973692
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].outWeight
+      value: 0.25248337
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].inSlope
+      value: 0.031309698
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[2].outSlope
+      value: 0.031309698
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[3].time
+      value: 1.0032959
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[3].value
+      value: -0.018817902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[3].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810365537593490, guid: 16384520dcd79a948a5a8ec2978715b9,
+        type: 2}
+      propertyPath: dashAnim.m_Curve.Array.data[3].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
