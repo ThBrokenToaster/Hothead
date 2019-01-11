@@ -29,7 +29,7 @@ public class PlayerKnockback : MonoBehaviour {
 	}
 
 	public void ApplyKnockback(Vector2 dir, float amount) {
-		this.dir = dir;
+		this.dir = dir.normalized;
 		this.amount = amount * knockbackMultiplier;
 		StartCoroutine("Knockback");
 	}

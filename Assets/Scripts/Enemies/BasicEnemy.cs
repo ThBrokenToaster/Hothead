@@ -78,14 +78,22 @@ public class BasicEnemy : DamageableAbstract {
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (other.GetComponent<DamageableAbstract>() != null && nextDamage < Time.time) {
-            other.GetComponent<DamageableAbstract>().Damage(damageAmount);
+        DamageableAbstract d = other.GetComponent<DamageableAbstract>();
+        if (d != null && nextDamage < Time.time) {
+            d.Damage(damageAmount);
             nextDamage = Time.time + damageRate;
 
-            Knockback(other.transform);
+            Vector2 dir = Vector2.up;
+            if (d.transform.position.x < transform.position.x) {
+                dir += Vector2.left;
+            } else {
+                dir += Vector2.right;
+            }
+            d.ApplyKnockback(dir, knockbackAmount);
         }
     }
 
+    // old knockback -- to be deleted
     void Knockback(Transform other) {
         Vector2 direction = new Vector2(other.position.x - transform.position.x, other.position.y - transform.position.y).normalized;
         direction *= knockbackAmount;

@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 114526661872193520}
   - component: {fileID: 114834631710959580}
   - component: {fileID: 114810365537593490}
+  - component: {fileID: 114602871689775316}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -396,6 +397,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   interact: {fileID: 0}
   unlock: {fileID: 0}
+  knockback: {fileID: 0}
   rb: {fileID: 0}
   animator: {fileID: 0}
   audioSource: {fileID: 0}
@@ -464,6 +466,55 @@ MonoBehaviour:
   projectiles:
   - {fileID: 1663262010513288, guid: d0befcb117b01a042848b19463d5c7a0, type: 2}
   fireRate: 1
+--- !u!114 &114602871689775316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228647328878596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d674eb14de38424bb91bf839301e745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: {x: 0, y: 0}
+  amount: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  knockbackTime: 0.5
+  knockbackMultiplier: 1
+  knockbackTimer: 0
 --- !u!114 &114788628269350968
 MonoBehaviour:
   m_ObjectHideFlags: 1
