@@ -8,28 +8,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     
     public static PlayerController instance;
-    public enum State { idle, melee, dash };
+    public enum State { idle, melee, dash, knockback };
 
     // Player components
-    [HideInInspector]
-    public PlayerHealth health;
-    [HideInInspector]
-    public PlayerMelee melee;
-    [HideInInspector]
-    public PlayerDash dash;
-    [HideInInspector]
-    public PlayerProjectile projectile;
-    [HideInInspector]
-    public PlayerInteract interact;
-    [HideInInspector]
-    public PlayerUnlock unlock;
+    [HideInInspector] public PlayerHealth health;
+    [HideInInspector] public PlayerMelee melee;
+    [HideInInspector] public PlayerDash dash;
+    [HideInInspector] public PlayerProjectile projectile;
+    [HideInInspector] public PlayerInteract interact;
+    [HideInInspector] public PlayerUnlock unlock;
+    [HideInInspector] public PlayerKnockback knockback;
     
-    [HideInInspector]
-    public Rigidbody2D rb;
-    [HideInInspector]
-    public Animator animator;
-    [HideInInspector]
-    public AudioSource audioSource;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public AudioSource audioSource;
 
     // General
     public float xSpeed;
@@ -43,8 +35,7 @@ public class PlayerController : MonoBehaviour {
     public int equipped = 0;
 
     // Jumping
-    [HideInInspector]
-    public bool grounded;
+    [HideInInspector] public bool grounded;
     private float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     public Transform groundCheck;
@@ -68,6 +59,7 @@ public class PlayerController : MonoBehaviour {
         projectile = GetComponent<PlayerProjectile>();
         interact = GetComponent<PlayerInteract>();
         unlock = GetComponent<PlayerUnlock>();
+        knockback = GetComponent<PlayerKnockback>();
         audioSource = GetComponent<AudioSource>();
 	}
   
@@ -106,6 +98,7 @@ public class PlayerController : MonoBehaviour {
         melee.MeleeUpdate();
         projectile.ProjectileUpdate();
         dash.DashUpdate();
+        knockback.KnockbackUpdate();
         
         // Switching Items
         if (Input.GetButtonDown("Fire3")) {
