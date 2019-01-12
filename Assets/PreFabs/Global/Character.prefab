@@ -98,7 +98,7 @@ GameObject:
   m_Layer: 0
   m_Name: WallCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -470,12 +470,14 @@ MonoBehaviour:
   wallCheck: {fileID: 4140479066737180}
   wallCheckBack: {fileID: 4666688858881832}
   jumpHeight: 12
-  jumpHeight2: 12
+  jumpHeight2: 10
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  wallJump: 12
+  wallJump: 10
   stickyForce: 20
   jumpDelay: 0.2
+  ductTape: 0.2
+  slide: 0
 --- !u!114 &114053434412426122
 MonoBehaviour:
   m_ObjectHideFlags: 1

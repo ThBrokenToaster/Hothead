@@ -64,6 +64,10 @@ public class PlayerController : MonoBehaviour {
     public float jumpDelay;
     float velX;
     float velY;
+    public float ductTape;
+    float wallTimer;
+    public float slide;
+    
 
     void Awake() {
 		if (instance == null) {
@@ -130,26 +134,6 @@ public class PlayerController : MonoBehaviour {
             canMove = false;
         }
 
-        //Wall Magneting
-        if (magnet)
-        {
-            if (onWallBack && facingRight)
-            {
-                rb.AddForce(new Vector2(-1 * stickyForce, 0));
-            } else if (onWallBack && !facingRight)
-            {
-                rb.AddForce(new Vector2(stickyForce, 0));
-            }
-
-            if (onWall && facingRight)
-            {
-                rb.AddForce(new Vector2(stickyForce, 0));
-            }
-            else if (onWall && !facingRight)
-            {
-                rb.AddForce(new Vector2(-1 * stickyForce, 0));
-            }
-        }
 
 
         //Wall Jumping
@@ -157,7 +141,6 @@ public class PlayerController : MonoBehaviour {
         {
             if (onWall && Input.GetButtonDown("Jump"))
             {
-                Debug.Log("WallJump");
                 onWall = false;
                 onWallBack = false;
                 magnet = false;
@@ -173,18 +156,14 @@ public class PlayerController : MonoBehaviour {
                 }
                 velY = jumpHeight;
             }
-
-
-
-
         
             if (onWallBack && Input.GetButtonDown("Jump"))
             {
-                Debug.Log("WallJump2");
                 onWall = false;
                 onWallBack = false;
                 magnet = false;
                 canMove = false;
+                jumpTimer = Time.time + jumpDelay;
                 if (!facingRight)
                 {
                     velX = -wallJump;
@@ -197,6 +176,21 @@ public class PlayerController : MonoBehaviour {
                 velY = jumpHeight;
             }
         }
+
+
+        if (onWall && !grounded && !onWallBack) {
+            wallTimer = ductTape + Time.time;
+        }
+
+        if (canMove && wallTimer > Time.time) {
+            velX = 0;
+        }
+
+        if (onWall && Input.GetAxisRaw("Horizontal") != 0) {
+            velY = 0;
+        }
+
+        Debug.Log(wallTimer - Time.time);
 
         // Component Updates
         melee.MeleeUpdate();
