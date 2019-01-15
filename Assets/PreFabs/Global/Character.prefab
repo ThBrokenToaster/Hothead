@@ -317,7 +317,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1228647328878596}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 71e437b4458b170479f243e24878259d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -469,15 +469,19 @@ MonoBehaviour:
   groundCheck: {fileID: 4245508387262806}
   wallCheck: {fileID: 4140479066737180}
   wallCheckBack: {fileID: 4666688858881832}
-  jumpHeight: 12
+  jumpHeight: 10
   jumpHeight2: 10
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  wallJump: 10
+  wallJump: 5
   stickyForce: 20
   jumpDelay: 0.2
   ductTape: 0.2
-  slide: 0
+  longJumpVars:
+  - 0.5
+  - 2
+  useVariableJumpDistances: 0
+  hasWallJump: 1
 --- !u!114 &114053434412426122
 MonoBehaviour:
   m_ObjectHideFlags: 1

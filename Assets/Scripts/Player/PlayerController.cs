@@ -66,7 +66,9 @@ public class PlayerController : MonoBehaviour {
     float velY;
     public float ductTape;
     float wallTimer;
-    public float slide;
+    public float[] longJumpVars;
+    public bool useVariableJumpDistances;
+    public bool hasWallJump = true;
     
 
     void Awake() {
@@ -134,63 +136,72 @@ public class PlayerController : MonoBehaviour {
             canMove = false;
         }
 
-
-
         //Wall Jumping
-        if (!grounded)
-        {
-            if (onWall && Input.GetButtonDown("Jump"))
+        if(hasWallJump) {
+            if (!grounded)
             {
-                onWall = false;
-                onWallBack = false;
-                magnet = false;
-                canMove = false;
-                jumpTimer = Time.time + jumpDelay;
-                if (facingRight)
+                if (onWall && Input.GetButtonDown("Jump"))
                 {
-                    velX = -wallJump;
+                    onWall = false;
+                    onWallBack = false;
+                    magnet = false;
+                    canMove = false;
+                    jumpTimer = Time.time + jumpDelay;
+                    if (facingRight)
+                    {
+                        velX = -wallJump;
 
-                } else
-                {
-                    velX = wallJump;
+                    } else
+                    {
+                        velX = wallJump;
+                    }
+                    velY = jumpHeight;
                 }
-                velY = jumpHeight;
+            
+                if (onWallBack && Input.GetButtonDown("Jump"))
+                {
+                    onWall = false;
+                    onWallBack = false;
+                    magnet = false;
+                    canMove = false;
+                    jumpTimer = Time.time + jumpDelay;
+                    if (!facingRight)
+                    {
+                        if (useVariableJumpDistances && Input.GetAxisRaw("Horizontal") < 0) {
+                            velY = jumpHeight * longJumpVars[0];
+                            velX = -wallJump * longJumpVars[1];
+                        } else {
+                            velY = jumpHeight;
+                            velX = -wallJump;
+                        }
+                    }
+                    else
+                    {
+                        if (useVariableJumpDistances && Input.GetAxisRaw("Horizontal") > 0) {
+                            velY = jumpHeight * longJumpVars[0];
+                            velX = wallJump * longJumpVars[1];
+                        } else {
+                            velY = jumpHeight;
+                            velX = wallJump;
+                        }
+                    }
+                }
             }
-        
-            if (onWallBack && Input.GetButtonDown("Jump"))
-            {
-                onWall = false;
-                onWallBack = false;
-                magnet = false;
-                canMove = false;
-                jumpTimer = Time.time + jumpDelay;
-                if (!facingRight)
-                {
-                    velX = -wallJump;
 
-                }
-                else
-                {
-                    velX = wallJump;
-                }
-                velY = jumpHeight;
+
+            if (onWall && !grounded && !onWallBack) {
+                wallTimer = ductTape + Time.time;
             }
+
+            if (canMove && wallTimer > Time.time) {
+                velX = 0;
+            }
+
+            if (onWall && Input.GetAxisRaw("Horizontal") != 0) {
+                velY = 0;
+            }
+
         }
-
-
-        if (onWall && !grounded && !onWallBack) {
-            wallTimer = ductTape + Time.time;
-        }
-
-        if (canMove && wallTimer > Time.time) {
-            velX = 0;
-        }
-
-        if (onWall && Input.GetAxisRaw("Horizontal") != 0) {
-            velY = 0;
-        }
-
-        Debug.Log(wallTimer - Time.time);
 
         // Component Updates
         melee.MeleeUpdate();
