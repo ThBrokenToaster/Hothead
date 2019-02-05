@@ -152,10 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1958012227965286, guid: 347e74cfd836bd142a1ee1a924f8ef07, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 347e74cfd836bd142a1ee1a924f8ef07, type: 2}
   m_IsPrefabAsset: 0
@@ -543,6 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a9315dd30c585458a4ff990444125e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windUpTime: 0.5
+  waittime: 1.5
   enemyMaxHealth: 20
   detect: {fileID: 302068291}
   wallDetect: {fileID: 1512986996}
@@ -558,6 +556,7 @@ MonoBehaviour:
   damageRate: 0.5
   knockbackAmount: 10
   frontSense: {fileID: 0}
+  attacking: 0
   animator: {fileID: 0}
 --- !u!4 &1133748994 stripped
 Transform:

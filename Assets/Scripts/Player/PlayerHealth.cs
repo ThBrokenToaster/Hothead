@@ -38,6 +38,10 @@ public class PlayerHealth : DamageableAbstract {
         
     }
 
+    override public void ApplyKnockback(Vector2 dir, float amount) {
+        player.knockback.ApplyKnockback(dir, amount);
+    }
+
     public void Heal(float amount) {
         currentHealth += amount;
         if (currentHealth > maxHealth) {

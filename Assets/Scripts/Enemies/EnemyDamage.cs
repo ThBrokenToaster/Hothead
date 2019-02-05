@@ -11,21 +11,19 @@ public class EnemyDamage : MonoBehaviour {
     public float damageRate;
     public float knockbackAmount;
 
-    float nextDamage;
-
-	void Start () {
-        nextDamage = 0;
-	}
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.GetComponent<DamageableAbstract>() != null) {
-            other.GetComponent<DamageableAbstract>().Damage(damageAmount);
-            nextDamage = Time.time + damageRate;
-
-            Knockback(other.transform);
+        DamageableAbstract d = other.GetComponent<DamageableAbstract>();
+        if (d != null) {
+            d.Damage(damageAmount);
+            Vector2 dPos = d.transform.position;
+            Vector2 dir = new Vector2(dPos.x - transform.position.x, dPos.y - transform.position.y).normalized;
+            d.ApplyKnockback(dir, knockbackAmount);
         }
     }
 
+    // outdated knockback method
+    // to be deleted
     void Knockback(Transform other) {
         Vector2 direction = new Vector2(other.position.x - transform.position.x, other.position.y - transform.position.y).normalized;
         direction *= knockbackAmount;
