@@ -195,6 +195,14 @@ public class PlayerController : MonoBehaviour {
 
         }
 
+        if (canMove)
+        {
+            onWall = Physics2D.OverlapCircle(wallCheck.position, groundCheckRadius, groundLayer);
+            onWallBack = Physics2D.OverlapCircle(wallCheckBack.position, groundCheckRadius, groundLayer);
+            magnet = true;
+        }
+        rb.velocity = new Vector2(velX , velY);
+        
         // Component Updates
         melee.MeleeUpdate();
         projectile.ProjectileUpdate();
@@ -211,13 +219,7 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if (canMove)
-        {
-            onWall = Physics2D.OverlapCircle(wallCheck.position, groundCheckRadius, groundLayer);
-            onWallBack = Physics2D.OverlapCircle(wallCheckBack.position, groundCheckRadius, groundLayer);
-            magnet = true;
-        }
-        rb.velocity = new Vector2(velX , velY);
+        
 
         // Set playAnim triggers
         animator.SetBool("isWalking", velX != 0f);
