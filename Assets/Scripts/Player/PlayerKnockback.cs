@@ -12,7 +12,7 @@ public class PlayerKnockback : MonoBehaviour {
 
 	public float knockbackTime;
 	public float knockbackMultiplier = 1;
-	public float knockbackTimer;
+	private float knockbackTimer;
 	
 	void Awake() {
         player = GetComponent<PlayerController>();
