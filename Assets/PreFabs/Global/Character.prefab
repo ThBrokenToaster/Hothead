@@ -594,11 +594,13 @@ MonoBehaviour:
   jumpHeight2: 0
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  wallJump: 0
-  stickyForce: 0
-  jumpDelay: 0
-  ductTape: 0
-  longJumpVars: []
+  wallJump: 5
+  stickyForce: 20
+  jumpDelay: 0.2
+  ductTape: 0.2
+  longJumpVars:
+  - 0.5
+  - 2
   useVariableJumpDistances: 0
   hasWallJump: 1
 --- !u!114 &114072705263978088
