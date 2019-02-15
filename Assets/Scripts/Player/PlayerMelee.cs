@@ -35,7 +35,7 @@ public class PlayerMelee : MonoBehaviour {
         //     }
         // }
 		// Melee attack
-        if (Input.GetButtonDown("Melee")) {
+        if (player.unlock.Has("MeleeSlice") && Input.GetButtonDown("Melee")) {
             if (player.grounded && player.state == PlayerController.State.idle) {
                 // timeSinceLastAttack = 0f;
                 // comboActive = true;
