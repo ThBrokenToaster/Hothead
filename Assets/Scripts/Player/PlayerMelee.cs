@@ -19,6 +19,7 @@ public class PlayerMelee : MonoBehaviour {
     // private bool comboActive = false;
     private bool continueCombo = false;
     private bool comboAllowed = false;
+    private bool comboAdvance = false;
 
 
 
@@ -43,9 +44,9 @@ public class PlayerMelee : MonoBehaviour {
 
                 player.state = PlayerController.State.melee;
                 player.animator.SetTrigger("meleeSlice");
-            } else {
+            } else if (comboAllowed) {
                 continueCombo = true;
-                if (comboAllowed) {
+                if (comboAdvance) {
                     player.animator.SetTrigger("comboNext");
                 }
             }
@@ -67,6 +68,7 @@ public class PlayerMelee : MonoBehaviour {
         player.state = PlayerController.State.melee;
         continueCombo = false;
         comboAllowed = false;
+        comboAdvance = false;
     }
 
     public void EnableMeleeHitbox(string hitboxName) {
@@ -74,16 +76,24 @@ public class PlayerMelee : MonoBehaviour {
         attackHitboxParent.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(true);
     }
 
+    public void AllowCombo() {
+        comboAllowed = true;
+    }
+
     public void DisableMeleeHitbox(string hitboxName) {
         // Melee hitbox is disabled
         attackHitboxParent.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(false);
     }
-
-    public void AllowComboFlow() {
-        comboAllowed = true;
-        if (continueCombo) {
+    
+    public void AdvanceCombo() {
+        comboAdvance = true;
+        if (continueCombo && comboAllowed) {
             player.animator.SetTrigger("comboNext");
         }
+    }
+
+    public void UnallowCombo() {
+        comboAllowed = false;
     }
     
     public void ExitMelee() {

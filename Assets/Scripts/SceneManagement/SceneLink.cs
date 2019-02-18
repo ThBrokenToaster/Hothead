@@ -28,6 +28,7 @@ public class SceneLink : MonoBehaviour {
 
 			GameManager.sceneLink = this;
 			GameManager.linkName = linkInSceneName;
+			GameManager.loadState = GameManager.LoadState.additive;
 
 			SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
 		}
