@@ -584,6 +584,8 @@ MonoBehaviour:
   hand: {fileID: 4838271969848332}
   equipped: 0
   grounded: 0
+  OnWall: 0
+  OnWallBack: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -591,18 +593,46 @@ MonoBehaviour:
   wallCheck: {fileID: 4140479066737180}
   wallCheckBack: {fileID: 4666688858881832}
   jumpHeight: 10
-  jumpHeight2: 0
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  wallJump: 5
-  stickyForce: 20
-  jumpDelay: 0.2
-  ductTape: 0.2
-  longJumpVars:
-  - 0.5
-  - 2
-  useVariableJumpDistances: 0
-  hasWallJump: 1
+  wallJumpSpeed: {x: 7, y: 10}
+  wallJumpTime: 0.2
+  wallStickTime: 0.2
+  longJumpMultipliers: {x: 1.75, y: 0.75}
+  longJump: 1
+  wallJumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114072705263978088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +700,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ef6ea9debe1cb4bab89bf5de2fca85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlocks: []
+  unlocks:
+  - title: WallJump
+    enabled: 1
+  - title: WallSlide
+    enabled: 1
+  - title: WallStick
+    enabled: 1
+  - title: MeleeSlice
+    enabled: 1
 --- !u!114 &114810365537593490
 MonoBehaviour:
   m_ObjectHideFlags: 0

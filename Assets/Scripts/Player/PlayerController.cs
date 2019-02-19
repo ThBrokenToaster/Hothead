@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     
     public static PlayerController instance;
-    public enum State { idle, melee, dash, knockback };
+    public enum State { idle, melee, dash, knockback, walljump, offwalljump };
 
     // Player components
     [HideInInspector] public PlayerHealth health;
@@ -30,37 +30,33 @@ public class PlayerController : MonoBehaviour {
 
     // PlasmaBolts
     public Transform hand;
-    
 
     public int equipped = 0;
 
     // Jumping
     [HideInInspector] public bool grounded;
+    [HideInInspector] public bool OnWall;
+    [HideInInspector] public bool OnWallBack;
     private float groundCheckRadius = 0.1f;
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Transform wallCheck;
     public Transform wallCheckBack;
+
     public float jumpHeight;
-    public float jumpHeight2;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
-    public float wallJump;
-    public float stickyForce;
-    bool magnet;
-    bool onWall;
-    bool onWallBack;
-    bool canMove;
-    float jumpTimer;
-    public float jumpDelay;
-    float velX;
-    float velY;
-    public float ductTape;
-    float wallTimer;
-    public float[] longJumpVars;
-    public bool useVariableJumpDistances;
-    public bool hasWallJump = true;
+
+    public Vector2 wallJumpSpeed;
+    public float wallJumpTime;
+    private float wallJumpTimer;
+    public float wallStickTime;
+    private float wallStickTimer;
     
+    public Vector2 longJumpMultipliers;
+    public bool longJump;
+    
+    public AnimationCurve wallJumpCurve;
 
     void Awake() {
 		if (instance == null) {
@@ -80,7 +76,6 @@ public class PlayerController : MonoBehaviour {
         unlock = GetComponent<PlayerUnlock>();
         knockback = GetComponent<PlayerKnockback>();
         audioSource = GetComponent<AudioSource>();
-        canMove = true;
 	}
   
   void Start() {
@@ -88,12 +83,12 @@ public class PlayerController : MonoBehaviour {
   }
 
 	void Update () {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        if(canMove) {
-            velX = Input.GetAxis("Horizontal") * xSpeed; // * Time.deltaTime;
-            velY = rb.velocity.y;
-        }
+        rb.gravityScale = 1f;
 
+        float velX = Input.GetAxis("Horizontal") * xSpeed;
+        float velY = rb.velocity.y;
+
+        // Flip Player
         if (velX != 0 && state == State.idle) {
             facingRight = velX > 0;
             Vector3 scale = transform.localScale;
@@ -101,6 +96,55 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = scale;
         }
 
+        // Check ground and walls
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        OnWall = Physics2D.OverlapCircle(wallCheck.position, groundCheckRadius, groundLayer);
+        OnWallBack = Physics2D.OverlapCircle(wallCheckBack.position, groundCheckRadius, groundLayer);
+
+        
+        if (unlock.Has("WallJump")) {
+            // Trigger Wall Jump
+            if (state == State.idle && !grounded && Input.GetButtonDown("Jump")) {
+                if (OnWall) {
+                    // normal
+                    OnWall = false;
+                    OnWallBack = false;
+                    state = State.walljump;
+                    wallJumpTimer = wallJumpTime;
+                    wallStickTimer = 0f;
+                    velY = wallJumpSpeed.y;
+                }
+                if (OnWallBack) {
+                    // facing away
+                    OnWall = false;
+                    OnWallBack = false;
+                    state = State.offwalljump;
+                    wallJumpTimer = wallJumpTime;
+                    wallStickTimer = 0f;
+                    velY = wallJumpSpeed.y * (longJump ? longJumpMultipliers.y : 1);
+                }
+            }
+
+            if (state == State.idle) {
+                if (OnWall && !grounded && !OnWallBack) {
+                    wallStickTimer = wallStickTime;
+                }
+                if (wallStickTimer > 0) {
+                    wallStickTimer -= Time.deltaTime;
+                    velX = 0;
+                }
+                if (OnWall && Input.GetAxisRaw("Horizontal") != 0 && velY <= 0f) {
+                    if (unlock.Has("WallStick")) {
+                        // user sticks to wall
+                        velY = 0;
+                        rb.gravityScale = 0f;
+                    } else if (unlock.Has("WallSlide")) {
+                        // user slides down wall
+                        rb.gravityScale = .3f;
+                    }
+                }
+            } 
+        }
 
         // Jumping
         if (grounded && Input.GetButtonDown("Jump") && state == State.idle) {
@@ -109,100 +153,34 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Smart Jump
-        if (canMove && !onWall && !onWallBack)
-        {
+        if (state == State.idle && !OnWall && !OnWallBack) {
             if (velY < 0) {
                 velY += Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             } else if (velY > 0 && !Input.GetButton("Jump")) {
                 velY += Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         }
-
-
-        if (Time.time > jumpTimer)
-        {
-            canMove = true;
-        }
-        else
-        {
-            canMove = false;
-        }
-
-        //Wall Jumping
-        if(hasWallJump) {
-            if (!grounded)
-            {
-                if (onWall && Input.GetButtonDown("Jump"))
-                {
-                    onWall = false;
-                    onWallBack = false;
-                    magnet = false;
-                    canMove = false;
-                    jumpTimer = Time.time + jumpDelay;
-                    if (facingRight)
-                    {
-                        velX = -wallJump;
-
-                    } else
-                    {
-                        velX = wallJump;
-                    }
-                    velY = jumpHeight;
-                }
-            
-                if (onWallBack && Input.GetButtonDown("Jump"))
-                {
-                    onWall = false;
-                    onWallBack = false;
-                    magnet = false;
-                    canMove = false;
-                    jumpTimer = Time.time + jumpDelay;
-                    if (!facingRight)
-                    {
-                        if (useVariableJumpDistances && Input.GetAxisRaw("Horizontal") < 0) {
-                            velY = jumpHeight * longJumpVars[0];
-                            velX = -wallJump * longJumpVars[1];
-                        } else {
-                            velY = jumpHeight;
-                            velX = -wallJump;
-                        }
-                    }
-                    else
-                    {
-                        if (useVariableJumpDistances && Input.GetAxisRaw("Horizontal") > 0) {
-                            velY = jumpHeight * longJumpVars[0];
-                            velX = wallJump * longJumpVars[1];
-                        } else {
-                            velY = jumpHeight;
-                            velX = wallJump;
-                        }
-                    }
-                }
-            }
-
-
-            if (onWall && !grounded && !onWallBack) {
-                wallTimer = ductTape + Time.time;
-            }
-
-            if (canMove && wallTimer > Time.time) {
-                velX = 0;
-            }
-
-            if (onWall && Input.GetAxisRaw("Horizontal") != 0) {
-                velY = 0;
-            }
-
-        }
-
-        if (canMove)
-        {
-            onWall = Physics2D.OverlapCircle(wallCheck.position, groundCheckRadius, groundLayer);
-            onWallBack = Physics2D.OverlapCircle(wallCheckBack.position, groundCheckRadius, groundLayer);
-            magnet = true;
-        }
-        rb.velocity = new Vector2(velX , velY);
         
+        // Apply Wall Jump
+        if (state == State.walljump || state == State.offwalljump) {
+            wallJumpTimer -= Time.deltaTime;
+            if (wallJumpTimer <= 0f) {
+                state = State.idle;
+            } else {
+                float newVelX;
+                if (state == State.walljump) {
+                    newVelX = wallJumpSpeed.x * (!facingRight ? 1f : -1f);
+                } else {
+                    newVelX = wallJumpSpeed.x * (!facingRight ? -1f : 1f) * (longJump ? longJumpMultipliers.x : 1);
+                }
+                float i = wallJumpCurve.Evaluate((wallJumpTime - wallJumpTimer) / wallJumpTime);
+                velX = (i * newVelX) + ((1f - i) * velX);
+            }
+        }
+        
+        // Set Velocity
+        rb.velocity = new Vector2(velX , velY);
+
         // Component Updates
         melee.MeleeUpdate();
         projectile.ProjectileUpdate();
@@ -217,9 +195,6 @@ public class PlayerController : MonoBehaviour {
                 equipped = 0;
             }
         }
-
-
-        
 
         // Set playAnim triggers
         animator.SetBool("isWalking", velX != 0f);

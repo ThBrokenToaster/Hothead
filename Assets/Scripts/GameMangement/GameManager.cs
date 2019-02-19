@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 
-	private enum LoadState { firstLoad, loaded, loadingToDoor };
-	private enum GameState { running, pauseMenu, paused };
-	private LoadState loadState = LoadState.firstLoad;
-	private GameState gameState = GameState.running;
+	public enum LoadState { firstLoad, loaded, loadingToDoor, additive };
+	public enum GameState { running, pauseMenu, paused };
+	public static LoadState loadState = LoadState.firstLoad;
+	private static GameState gameState = GameState.running;
 
 	public bool paused = false;
 	private string loadToDoorName;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// refresh unless its the first load
-		if (loadState != LoadState.firstLoad) {
+		if (loadState != LoadState.firstLoad && loadState != LoadState.additive) {
 			// Everything that has subscribed to the event will be notified
 			StartCoroutine(RefreshWithLate());
 		}

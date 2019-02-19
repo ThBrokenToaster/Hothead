@@ -20,32 +20,24 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300002, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300004, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.25
-      value: {fileID: 21300006, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.33333334
       value: {fileID: 21300008, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.41666666
+    - time: 0.083333336
       value: {fileID: 21300010, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.5
+    - time: 0.16666667
       value: {fileID: 21300012, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.5833333
+    - time: 0.25
       value: {fileID: 21300014, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300018, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
+    - time: 0.5
+      value: {fileID: 21300020, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     - time: 0.6666667
       value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     - time: 0.75
-      value: {fileID: 21300018, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.8333333
-      value: {fileID: 21300020, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 0.9166667
-      value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 1
-      value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - time: 1.0833334
       value: {fileID: 21300016, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     attribute: m_Sprite
     path: 
@@ -66,10 +58,6 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - {fileID: 21300002, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - {fileID: 21300004, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
-    - {fileID: 21300006, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     - {fileID: 21300008, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     - {fileID: 21300010, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
     - {fileID: 21300012, guid: 5071ec74f83d2b54ba9ccde50d20c25f, type: 3}
@@ -85,7 +73,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1666667
+    m_StopTime: 0.8333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -112,28 +100,35 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.25
     functionName: EnableMeleeHitbox
     data: Slice1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0.25
+    functionName: AllowCombo
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
     functionName: DisableMeleeHitbox
     data: Slice1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.75
-    functionName: AllowComboFlow
+  - time: 0.41666666
+    functionName: AdvanceCombo
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.0833334
+  - time: 0.75
     functionName: ExitMelee
     data: 
     objectReferenceParameter: {fileID: 0}

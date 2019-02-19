@@ -749,7 +749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 2.2000122, y: 75.3}
+  m_AnchoredPosition: {x: 2.2000732, y: 75.29999}
   m_SizeDelta: {x: -264.4, y: 118.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222579838186664706
@@ -1873,8 +1873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a463409c7830041994ea33d9e43aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockText: {fileID: 0}
-  text: 
+  unlockText: {fileID: 114211044286251734}
+  text: You now have the <color=green>{0}</color>
 --- !u!114 &114433576060680808
 MonoBehaviour:
   m_ObjectHideFlags: 0
