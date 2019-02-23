@@ -56,7 +56,7 @@ public class PlayerMelee : MonoBehaviour {
         }
         
         // Stop melee if falling, otherwise animator will not call exit melee
-        if (player.state == PlayerController.State.melee && player.rb.velocity.y < 0f) {
+        if (player.state == PlayerController.State.melee && !player.grounded) {
             ExitMelee();
         }
         
@@ -92,7 +92,6 @@ public class PlayerMelee : MonoBehaviour {
         comboAllowed = false;
         comboAdvance = false;
         activeAttack =  attackHitboxParent.Find(attack).GetComponent<PlayerMeleeCollider>();
-
     }
 
     public void EnableMeleeHitbox() {
