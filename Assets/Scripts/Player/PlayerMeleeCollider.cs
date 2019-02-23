@@ -9,6 +9,8 @@ public class PlayerMeleeCollider : MonoBehaviour {
 
     public float damage;
     public float knockback;
+    public float horizontalSlideForce;
+    public AnimationCurve horizontalSlideCurve;
 
     public void SetEnabled(bool e) {
         GetComponent<Collider2D>().enabled = e;
@@ -31,5 +33,9 @@ public class PlayerMeleeCollider : MonoBehaviour {
             Vector2 dir = (other.transform.position - transform.position).normalized;
             d.ApplyKnockback(dir, knockback);
         }
+    }
+
+    public float GetHorizontalSlide(float time) {
+        return horizontalSlideCurve.Evaluate(time) * horizontalSlideForce;
     }
 }
