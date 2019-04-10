@@ -20,7 +20,10 @@ public class PlayerMelee : MonoBehaviour {
     private bool continueCombo = false;
     private bool comboAllowed = false;
     private bool comboAdvance = false;
+    private PlayerMeleeCollider activeAttack;
 
+    public float slideFadeTimeout;
+    private float slideFadeTimer;
 
 
 	void Awake() {
@@ -52,9 +55,28 @@ public class PlayerMelee : MonoBehaviour {
             }
         }
         
-
+        // Stop melee if falling, otherwise animator will not call exit melee
+        if (player.state == PlayerController.State.melee && !player.grounded) {
+            ExitMelee();
+        }
+        
         if (player.state == PlayerController.State.melee) {
-            player.rb.velocity = new Vector2(0f, player.rb.velocity.y);
+            if (activeAttack != null) {
+                float t = player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                float force = activeAttack.GetHorizontalSlide(t) * (player.facingRight ? 1 : -1);
+                if (slideFadeTimer > 0) {
+                    force = Mathf.Lerp(force, player.rb.velocity.x, slideFadeTimer / slideFadeTimeout);
+                    slideFadeTimer -= Time.deltaTime;
+                }
+                player.rb.velocity = new Vector2(force, player.rb.velocity.y);
+            } else {
+                // This code is triggered on first frame of a new combo, tigger fade into slide
+                slideFadeTimer = slideFadeTimeout;
+
+                //player.rb.velocity = new Vector2(0f, player.rb.velocity.y);
+
+            }
+            
         }
         player.animator.SetBool("continueCombo", continueCombo);
 	}
@@ -63,26 +85,27 @@ public class PlayerMelee : MonoBehaviour {
      * Each melee animation should have three phases:
      * Buildup, Contact, Recovery
      */
-    public void EnterMelee() {
+    public void EnterMelee(string attack) {
         // Player is locked down, animation starts
         player.state = PlayerController.State.melee;
         continueCombo = false;
         comboAllowed = false;
         comboAdvance = false;
+        activeAttack =  attackHitboxParent.Find(attack).GetComponent<PlayerMeleeCollider>();
     }
 
-    public void EnableMeleeHitbox(string hitboxName) {
+    public void EnableMeleeHitbox() {
         // Melee hitbox is enabled
-        attackHitboxParent.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(true);
+        activeAttack.SetEnabled(true);
     }
 
     public void AllowCombo() {
         comboAllowed = true;
     }
 
-    public void DisableMeleeHitbox(string hitboxName) {
+    public void DisableMeleeHitbox() {
         // Melee hitbox is disabled
-        attackHitboxParent.Find(hitboxName).GetComponent<PlayerMeleeCollider>().SetEnabled(false);
+        activeAttack.SetEnabled(false);
     }
     
     public void AdvanceCombo() {
@@ -99,5 +122,8 @@ public class PlayerMelee : MonoBehaviour {
     public void ExitMelee() {
         // Player is released, allowed to move
         player.state = PlayerController.State.idle;
+        activeAttack.SetEnabled(false);
+        activeAttack = null;
+        
     }
 }

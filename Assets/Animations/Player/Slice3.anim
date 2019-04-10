@@ -77,7 +77,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: EnterMelee
-    data: 
+    data: Slice3
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
